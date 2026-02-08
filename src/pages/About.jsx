@@ -481,25 +481,11 @@ export default function About() {
                         </h2>
 
                         {/* Body Text */}
-                        <p className="text-lg text-gray-100 leading-relaxed max-w-4xl mx-auto">
+                        <p className="text-lg text-gray-100 leading-relaxed max-w-4xl mx-auto mb-6">
                             Distributed economies are still in their early stages of development, but they have the potential to revolutionize the way we think about the economy. As technology continues to develop, distributed economies are likely to become more widespread and influential.
                         </p>
-                    </motion.div>
 
-                    {/* Conclusion Section */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-center"
-                    >
-                        {/* Main Heading */}
-                        <h2 className="text-3xl md:text-5xl font-bold text-white mb-8 leading-tight">
-                            Conclusion
-                        </h2>
-
-                        {/* Body Text */}
+                        {/* Merged Conclusion Content */}
                         <p className="text-lg text-gray-100 leading-relaxed max-w-4xl mx-auto">
                             Distributed economies offer a number of potential benefits, including decentralization, transparency, efficiency, and sustainability. As technology continues to develop, distributed economies are likely to become more widespread and influential.
                         </p>

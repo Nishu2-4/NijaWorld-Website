@@ -140,6 +140,56 @@ export default function SolutionsPage() {
                             );
                         })}
                     </div>
+
+                    {/* Ecosystem Card */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="mt-10 max-w-5xl mx-auto"
+                    >
+                        <div className="bg-white/80 dark:bg-gray-900/60 backdrop-blur-md border border-gray-200 dark:border-gray-800/50 rounded-2xl overflow-hidden hover:border-nijaGreen dark:hover:border-nijaGreen hover:shadow-2xl hover:shadow-nijaGreen/10 transition-all duration-300 group">
+                            <div className="grid md:grid-cols-2 gap-6 items-center">
+                                {/* Text Content */}
+                                <div className="p-6">
+                                    <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-nijaGreen transition-colors">
+                                        Our Ecosystem
+                                    </h3>
+                                    <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed text-base">
+                                        Explore the interconnected network of technologies, partners, and solutions that power enterprise transformation.
+                                    </p>
+                                    <ul className="space-y-2 mb-5">
+                                        <li className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nijaGreen flex-shrink-0" />
+                                            <span>Integrated technology stack</span>
+                                        </li>
+                                        <li className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nijaGreen flex-shrink-0" />
+                                            <span>Strategic partnerships</span>
+                                        </li>
+                                        <li className="flex items-start gap-2 text-gray-600 dark:text-gray-400 text-sm">
+                                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nijaGreen flex-shrink-0" />
+                                            <span>End-to-end solutions</span>
+                                        </li>
+                                    </ul>
+                                    <button className="bg-nijaGreen hover:bg-green-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 hover:scale-105 transform">
+                                        Explore Ecosystem →
+                                    </button>
+                                </div>
+
+                                {/* Image */}
+                                <div className="h-full min-h-[280px] relative overflow-hidden">
+                                    <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-white dark:to-gray-900 z-10" />
+                                    <img
+                                        src="/distributed-economy.png"
+                                        alt="Ecosystem"
+                                        className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
                 </div>
             </section>
 
