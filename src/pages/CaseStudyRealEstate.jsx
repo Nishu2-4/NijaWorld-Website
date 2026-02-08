@@ -1,32 +1,49 @@
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 
 export default function CaseStudyRealEstate() {
+    const [activeStep, setActiveStep] = useState(null);
+
     return (
         <div className='min-h-screen bg-gray-50 dark:bg-baseDark'>
             <Navbar />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-16 px-6 bg-white dark:bg-gray-900">
-                <div className="max-w-5xl mx-auto">
+            <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+                {/* Background Image */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{
+                        backgroundImage: "url('/images/real-estate-hero.jpg')",
+                        imageRendering: '-webkit-optimize-contrast',
+                        backfaceVisibility: 'hidden',
+                        transform: 'translateZ(0)'
+                    }}
+                >
+                    {/* Overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-gray-900/70"></div>
+                </div>
+
+                <div className="max-w-5xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                     >
                         {/* Client Context */}
-                        <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 uppercase tracking-wide">
+                        <p className="text-sm text-gray-300 mb-4 uppercase tracking-wide">
                             Real estate investment operator | Multi-asset portfolio
                         </p>
 
                         {/* Main Title */}
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
+                        <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
                             Controlled Liquidity for Tokenised Real Estate Cashflow Entitlements
                         </h1>
 
                         {/* Outcome Summary */}
-                        <p className="text-xl text-gray-700 dark:text-gray-300 mb-8 font-medium border-l-4 border-nijaPurple pl-4">
+                        <p className="text-xl text-gray-200 mb-8 font-medium border-l-4 border-nijaPurple pl-4">
                             Standardised issuance-to-liquidity workflows with transfer restrictions, governance approvals, and investor reporting outputs.
                         </p>
 
@@ -152,8 +169,18 @@ export default function CaseStudyRealEstate() {
                             Nija World delivered a governed liquidity approach through the following structured steps:
                         </p>
 
-                        {/* Step-based Layout */}
-                        <div className="space-y-6">
+                        {/* Step-based Layout with Timeline */}
+                        <div className="space-y-6 relative">
+                            {/* Vertical connecting line */}
+                            <div className="absolute left-4 top-6 bottom-6 w-0.5 bg-nijaPurple/20">
+                                <div
+                                    className="w-full bg-nijaPurple transition-all duration-500 ease-in-out"
+                                    style={{
+                                        height: activeStep ? `${((activeStep - 1) / (4 - 1)) * 100}%` : '0%'
+                                    }}
+                                />
+                            </div>
+
                             {[
                                 {
                                     number: 1,
@@ -175,27 +202,34 @@ export default function CaseStudyRealEstate() {
                                     title: 'Reporting & Governance Outputs',
                                     description: 'Deliver reporting outputs including investor statements, lifecycle event records, and audit-ready compliance evidence.'
                                 }
-                            ].map((step) => (
-                                <div
+                            ].map((step, idx) => (
+                                <motion.div
                                     key={step.number}
-                                    className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-6 hover:border-nijaPurple dark:hover:border-nijaPurple transition-all duration-300"
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`flex items-start gap-4 relative z-10 group transition-all duration-200 p-3 -ml-3 rounded-xl cursor-pointer ${activeStep === step.number ? 'bg-nijaPurple/10' : 'hover:bg-nijaPurple/5'
+                                        }`}
+                                    onMouseEnter={() => setActiveStep(step.number)}
+                                    onMouseLeave={() => setActiveStep(null)}
                                 >
-                                    <div className="flex gap-4">
-                                        <div className="flex-shrink-0">
-                                            <div className="w-12 h-12 bg-nijaPurple text-white rounded-full flex items-center justify-center text-xl font-bold">
-                                                {step.number}
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                                                Step {step.number} – {step.title}
-                                            </h3>
-                                            <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                                                {step.description}
-                                            </p>
-                                        </div>
+                                    <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold text-sm flex-shrink-0 transition-all duration-200 ${activeStep !== null && activeStep >= step.number
+                                        ? 'bg-nijaPurple border-nijaPurple text-white'
+                                        : 'bg-white dark:bg-gray-900 border-nijaPurple text-nijaPurple group-hover:bg-nijaPurple group-hover:text-white'
+                                        }`}>
+                                        {step.number}
                                     </div>
-                                </div>
+                                    <div>
+                                        <h3 className={`font-bold text-lg leading-none mb-2 transition-colors duration-200 ${activeStep === step.number ? 'text-nijaPurple' : 'text-gray-900 dark:text-white group-hover:text-nijaPurple'
+                                            }`}>
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                                            {step.description}
+                                        </p>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>
@@ -212,16 +246,33 @@ export default function CaseStudyRealEstate() {
                     >
                         <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Architecture Overview</h2>
 
-                        <div className="grid gap-4">
+                        {/* Timeline Layout with Alternating Colors */}
+                        <div className="space-y-6 relative">
+                            {/* Vertical connecting line - gradient from purple to green */}
+                            <div className="absolute left-4 top-6 bottom-6 w-0.5 bg-gradient-to-b from-nijaPurple/20 via-nijaGreen/20 to-nijaPurple/20"></div>
+
                             {[
-                                { step: '01', text: 'Asset data + valuation schedule → rights definition', color: 'nijaPurple' },
-                                { step: '02', text: 'Issuance → controlled transfer flows → settlement confirmation', color: 'nijaGreen' },
-                                { step: '03', text: 'Reporting layer → investor statements + compliance evidence', color: 'nijaPurple' }
+                                { step: 1, text: 'Asset data + valuation schedule → rights definition', color: 'nijaPurple' },
+                                { step: 2, text: 'Issuance → controlled transfer flows → settlement confirmation', color: 'nijaGreen' },
+                                { step: 3, text: 'Reporting layer → investor statements + compliance evidence', color: 'nijaPurple' }
                             ].map((item, idx) => (
-                                <div key={idx} className="flex items-center gap-4 bg-gray-50 dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-                                    <span className={`text-3xl font-bold text-${item.color} min-w-[60px]`}>{item.step}</span>
-                                    <p className="text-gray-700 dark:text-gray-300 text-lg">{item.text}</p>
-                                </div>
+                                <motion.div
+                                    key={item.step}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ delay: idx * 0.1 }}
+                                    className={`flex items-start gap-4 relative z-10 group transition-all duration-200 p-3 -ml-3 rounded-xl cursor-pointer hover:bg-${item.color}/5`}
+                                >
+                                    <div className={`w-8 h-8 rounded-full border-2 flex items-center justify-center font-bold text-sm flex-shrink-0 transition-all duration-200 bg-white dark:bg-gray-900 border-${item.color} text-${item.color} group-hover:bg-${item.color} group-hover:text-white`}>
+                                        {item.step}
+                                    </div>
+                                    <div>
+                                        <p className={`text-gray-700 dark:text-gray-300 text-lg leading-relaxed group-hover:text-${item.color} transition-colors duration-200`}>
+                                            {item.text}
+                                        </p>
+                                    </div>
+                                </motion.div>
                             ))}
                         </div>
                     </motion.div>

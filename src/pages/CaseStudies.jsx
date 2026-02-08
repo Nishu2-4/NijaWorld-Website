@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { Banknote, Building2 } from 'lucide-react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 
@@ -7,28 +8,20 @@ export default function CaseStudies() {
     const caseStudies = [
         {
             id: 1,
-            category: "PRIVATE CREDIT",
             title: "Liquidity Enablement for Tokenised Private Credit Notes",
-            description: "Transforming private credit markets through institutional-grade tokenisation and liquidity infrastructure.",
             industry: "Financial Services / Private Credit",
             kpiHighlight: "Reduced settlement cycle by 30–55%",
             tags: ["RWA Liquidity", "Tokenisation", "Governance", "Reporting"],
-            icon: "💎",
-            gradientFrom: "from-nijaGreen/20",
-            gradientTo: "to-nijaPurple/20",
+            icon: Banknote,
             link: "/case-studies/rwa-liquidity-private-credit-notes"
         },
         {
             id: 2,
-            category: "REAL ESTATE",
             title: "Controlled Liquidity for Tokenised Real Estate Cashflow Entitlements",
-            description: "Enabling controlled secondary markets for tokenised real estate cashflow rights with investor protections.",
             industry: "Real Estate / Investment Operations",
             kpiHighlight: "Reduced admin overhead by 20–40%",
             tags: ["RWA Liquidity", "Governance", "Investor Controls", "Reporting"],
-            icon: "🏛️",
-            gradientFrom: "from-nijaPurple/20",
-            gradientTo: "to-nijaGreen/20",
+            icon: Building2,
             link: "/case-studies/rwa-liquidity-real-estate-cashflows"
         }
     ];
@@ -38,15 +31,24 @@ export default function CaseStudies() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-16 px-6">
-                <div className="max-w-7xl mx-auto">
+            <section className="relative pt-32 pb-16 px-6 overflow-hidden">
+                {/* Background Image */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url('/images/case-studies-hero.png')" }}
+                >
+                    {/* Dark overlay for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-gray-900/90"></div>
+                </div>
+
+                <div className="max-w-7xl mx-auto relative z-10">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
                         className="text-center mb-4"
                     >
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white">
+                        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
                             Proven delivery in real environments
                         </h1>
                     </motion.div>
@@ -63,66 +65,63 @@ export default function CaseStudies() {
                                 initial={{ opacity: 0, y: 30 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: index * 0.15 }}
-                                className={`relative bg-white dark:bg-gray-900 rounded-2xl p-8 overflow-hidden group transition-all duration-500 ${study.id === 1
-                                    ? 'hover:shadow-[0_0_40px_rgba(0,255,157,0.4)] dark:hover:shadow-[0_0_40px_rgba(0,255,157,0.3)]'
-                                    : 'hover:shadow-[0_0_40px_rgba(138,43,226,0.4)] dark:hover:shadow-[0_0_40px_rgba(138,43,226,0.3)]'
-                                    }`}
+                                whileHover={{
+                                    y: -5,
+                                    scale: 1.01,
+                                    transition: { type: 'spring', stiffness: 300, damping: 20 }
+                                }}
+                                className="group relative flex flex-col bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-2xl hover:shadow-nijaGreen/20 hover:border-nijaGreen/50"
                             >
-                                {/* Gradient Overlay Background */}
-                                <div className={`absolute inset-0 bg-gradient-to-br ${study.gradientFrom} ${study.gradientTo} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                                <div className={`absolute top-0 right-0 w-64 h-64 bg-gradient-to-br ${study.gradientFrom} ${study.gradientTo} blur-3xl opacity-30`}></div>
-                                <div className={`absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-tr ${study.gradientTo} ${study.gradientFrom} blur-3xl opacity-20`}></div>
-
-                                {/* Content */}
-                                <div className="relative z-10">
-                                    {/* Top Section: Category Label */}
-                                    <div className="flex items-center justify-between mb-6">
-                                        <span className="text-xs font-bold tracking-widest text-gray-500 dark:text-gray-400 uppercase">
-                                            {study.category}
-                                        </span>
+                                {/* Fixed height wrapper for Header + Tags to align separator line */}
+                                <div className="flex flex-col min-h-[120px]">
+                                    {/* Header: Icon + Title */}
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-3 rounded-xl bg-gray-50 dark:bg-white/5 text-nijaGreen flex-shrink-0 mt-1">
+                                            <study.icon size={28} strokeWidth={1.5} />
+                                        </div>
+                                        <h3 className="font-bold text-lg text-gray-900 dark:text-white leading-tight">
+                                            {study.title}
+                                        </h3>
                                     </div>
 
-                                    {/* Icon */}
-                                    <div className="w-14 h-14 mb-4 flex items-center justify-center text-4xl bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700">
-                                        {study.icon}
-                                    </div>
-
-                                    {/* Title */}
-                                    <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white leading-tight">
-                                        {study.title}
-                                    </h3>
-
-                                    {/* Description */}
-                                    <p className="text-gray-600 dark:text-gray-400 mb-4 leading-relaxed">
-                                        {study.description}
-                                    </p>
-
-                                    {/* KPI Highlight - Subtle emphasis */}
-                                    <p className="text-sm italic text-gray-500 dark:text-gray-500 mb-6">
-                                        {study.kpiHighlight}
-                                    </p>
-
-                                    {/* Bottom Section: CTA */}
-                                    <div className="flex justify-center pt-4">
-                                        {study.link ? (
-                                            <Link to={study.link}>
-                                                <button className={`${study.id === 1
-                                                    ? 'bg-nijaGreen hover:bg-green-500 shadow-nijaGreen/30 hover:shadow-nijaGreen/50'
-                                                    : 'bg-nijaPurple hover:bg-purple-600 shadow-nijaPurple/30 hover:shadow-nijaPurple/50'
-                                                    } text-white px-8 py-3.5 text-base rounded-full font-medium transition shadow-lg transform hover:scale-105`}>
-                                                    View Case
-                                                </button>
-                                            </Link>
-                                        ) : (
-                                            <button className={`${study.id === 1
-                                                ? 'bg-nijaGreen hover:bg-green-500 shadow-nijaGreen/30 hover:shadow-nijaGreen/50'
-                                                : 'bg-nijaPurple hover:bg-purple-600 shadow-nijaPurple/30 hover:shadow-nijaPurple/50'
-                                                } text-white px-8 py-3.5 text-base rounded-full font-medium transition shadow-lg transform hover:scale-105`}>
-                                                View Case
-                                            </button>
-                                        )}
+                                    {/* Tags starting from below icon (left aligned) */}
+                                    <div className="flex flex-wrap gap-1.5 mt-4">
+                                        {study.tags.map((tag, tagIdx) => (
+                                            <span
+                                                key={tagIdx}
+                                                className="px-2 py-0.5 text-[10px] rounded-full bg-nijaGreen/10 text-nijaGreen font-medium uppercase tracking-wide"
+                                            >
+                                                {tag}
+                                            </span>
+                                        ))}
                                     </div>
                                 </div>
+
+                                <div className="w-full h-px bg-gray-200 dark:bg-white/10 mb-5"></div>
+
+                                {/* Details in bullet points */}
+                                <ul className="space-y-3 mb-6 flex-grow">
+                                    <li className="flex items-start gap-3">
+                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nijaGreen flex-shrink-0" />
+                                        <span className="text-gray-600 dark:text-gray-400 text-sm">
+                                            <span className="font-medium text-gray-900 dark:text-gray-300">Industry:</span> {study.industry}
+                                        </span>
+                                    </li>
+                                    <li className="flex items-start gap-3">
+                                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-nijaGreen flex-shrink-0" />
+                                        <span className="text-gray-600 dark:text-gray-400 text-sm">
+                                            <span className="font-medium text-gray-900 dark:text-gray-300">KPI Highlight:</span> {study.kpiHighlight}
+                                        </span>
+                                    </li>
+                                </ul>
+
+                                {/* CTA Button */}
+                                <Link
+                                    to={study.link}
+                                    className="w-full px-6 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 bg-nijaGreen/10 hover:bg-nijaGreen text-nijaGreen hover:text-white border border-nijaGreen/30 hover:shadow-lg hover:shadow-nijaGreen/50"
+                                >
+                                    Read Case Study <span>→</span>
+                                </Link>
                             </motion.div>
                         ))}
                     </div>
