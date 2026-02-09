@@ -319,33 +319,34 @@ function NijaDiiALogo() {
 
 function FlipCard({ item, idx }) {
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.1 }}
-            className="h-[28rem] group w-full"
-            style={{ perspective: '1000px' }}
-        >
-            <div
-                className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateX(180deg)]"
-                style={{ transformStyle: 'preserve-3d' }}
+        <Link to={`/ecosystem/${item.id}`} className="block h-[28rem] group w-full cursor-pointer">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="h-full w-full"
+                style={{ perspective: '1000px' }}
             >
-                {/* Front Side */}
                 <div
-                    className="absolute inset-0 w-full h-full rounded-2xl p-[2px] bg-gradient-to-br from-nijaPurple to-nijaGreen overflow-hidden group-hover:pointer-events-none"
-                    style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transformStyle: 'preserve-3d'
-                    }}
+                    className="relative w-full h-full transition-transform duration-700 group-hover:[transform:rotateX(180deg)]"
+                    style={{ transformStyle: 'preserve-3d' }}
                 >
-                    <div className={`w-full h-full rounded-[14px] p-8 ${item.isCustomLogo || item.isSmacG || item.isDavPro || item.isTokeniZ || item.isNijaDiiA ? 'bg-white' : 'bg-white dark:bg-gray-900'} overflow-hidden relative h-full flex flex-col items-center justify-center`}>
-                        {/* Universal Background Pattern - Animated 3D Wave Dots */}
-                        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="opacity-[0.5]">
-                                <defs>
-                                    <style>
-                                        {`
+                    {/* Front Side */}
+                    <div
+                        className="absolute inset-0 w-full h-full rounded-2xl p-[2px] bg-gradient-to-br from-nijaPurple to-nijaGreen overflow-hidden group-hover:pointer-events-none"
+                        style={{
+                            backfaceVisibility: 'hidden',
+                            WebkitBackfaceVisibility: 'hidden',
+                            transformStyle: 'preserve-3d'
+                        }}
+                    >
+                        <div className={`w-full h-full rounded-[14px] p-8 ${item.isCustomLogo || item.isSmacG || item.isDavPro || item.isTokeniZ || item.isNijaDiiA ? 'bg-white' : 'bg-white dark:bg-gray-900'} overflow-hidden relative h-full flex flex-col items-center justify-center`}>
+                            {/* Universal Background Pattern - Animated 3D Wave Dots */}
+                            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" className="opacity-[0.5]">
+                                    <defs>
+                                        <style>
+                                            {`
                                             @keyframes waveDot {
                                                 0%, 100% { transform: scale(0.6); opacity: 0.3; }
                                                 50% { transform: scale(1.4); opacity: 0.8; }
@@ -353,144 +354,140 @@ function FlipCard({ item, idx }) {
                                             .wave-dot-${idx} { animation: waveDot 3s ease-in-out infinite; }
                                             .wave-dot-${idx}:nth-child(odd) { animation-delay: 0.5s; }
                                         `}
-                                    </style>
-                                    <pattern id={`wave-dots-${idx}`} width="24" height="24" patternUnits="userSpaceOnUse">
-                                        <circle className={`wave-dot-${idx}`} cx="6" cy="6" r="1.5" fill="#1EB980">
-                                            <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="0s" />
-                                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="0s" />
-                                        </circle>
-                                        <circle className={`wave-dot-${idx}`} cx="18" cy="6" r="1.5" fill="#7C3AED">
-                                            <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="0.5s" />
-                                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="0.5s" />
-                                        </circle>
-                                        <circle className={`wave-dot-${idx}`} cx="6" cy="18" r="1.5" fill="#7C3AED">
-                                            <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="1s" />
-                                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1s" />
-                                        </circle>
-                                        <circle className={`wave-dot-${idx}`} cx="18" cy="18" r="1.5" fill="#1EB980">
-                                            <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="1.5s" />
-                                            <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1.5s" />
-                                        </circle>
-                                    </pattern>
-                                </defs>
-                                <rect width="100%" height="100%" fill={`url(#wave-dots-${idx})`} />
-                            </svg>
+                                        </style>
+                                        <pattern id={`wave-dots-${idx}`} width="24" height="24" patternUnits="userSpaceOnUse">
+                                            <circle className={`wave-dot-${idx}`} cx="6" cy="6" r="1.5" fill="#1EB980">
+                                                <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="0s" />
+                                                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="0s" />
+                                            </circle>
+                                            <circle className={`wave-dot-${idx}`} cx="18" cy="6" r="1.5" fill="#7C3AED">
+                                                <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="0.5s" />
+                                                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="0.5s" />
+                                            </circle>
+                                            <circle className={`wave-dot-${idx}`} cx="6" cy="18" r="1.5" fill="#7C3AED">
+                                                <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="1s" />
+                                                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1s" />
+                                            </circle>
+                                            <circle className={`wave-dot-${idx}`} cx="18" cy="18" r="1.5" fill="#1EB980">
+                                                <animate attributeName="r" values="1;2;1" dur="2s" repeatCount="indefinite" begin="1.5s" />
+                                                <animate attributeName="opacity" values="0.3;0.7;0.3" dur="2s" repeatCount="indefinite" begin="1.5s" />
+                                            </circle>
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill={`url(#wave-dots-${idx})`} />
+                                </svg>
+                            </div>
+
+                            {/* Universal Corner Accents */}
+                            <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${item.color.replace('text-', 'from-')}/10 to-transparent rounded-bl-[100px] pointer-events-none`} />
+                            <div className={`absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr ${item.color.replace('text-', 'from-')}/5 to-transparent rounded-tr-[80px] pointer-events-none`} />
+
+                            <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
+                                {item.isNijaDiiA ? (
+                                    /* NijaDiiA Custom Logo */
+                                    <NijaDiiALogo />
+                                ) : item.isTokeniZ ? (
+                                    /* TokeniZ Custom Logo */
+                                    <TokeniZLogo />
+                                ) : item.isDavPro ? (
+                                    /* DAVPro Custom Logo */
+                                    <DAVProLogo />
+                                ) : item.isSmacG ? (
+                                    /* SmaCG Custom Logo */
+                                    <SmaCGLogo />
+                                ) : item.isCustomLogo ? (
+                                    /* Nija Wallet Custom Logo */
+                                    <div className="mb-4">
+                                        <NijaWalletLogo className="w-40 h-40" />
+                                    </div>
+                                ) : (
+                                    <div className={`mb-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 ${item.color}`}>
+                                        <item.icon size={40} strokeWidth={1.5} />
+                                    </div>
+                                )}
+
+                                {!item.isSmacG && !item.isDavPro && !item.isTokeniZ && !item.isNijaDiiA && (item.isCustomLogo ? (
+                                    /* Nija Wallet gradient text */
+                                    <h3 className="text-3xl font-bold mb-3 font-heading bg-gradient-to-r from-nijaGreen to-nijaPurple bg-clip-text text-transparent">
+                                        {item.title.toLowerCase()}
+                                    </h3>
+                                ) : (
+                                    <h3 className={`text-2xl font-bold mb-3 ${item.color} font-heading`}>
+                                        {item.title}
+                                    </h3>
+                                ))}
+
+                                {!item.isCustomLogo && !item.isSmacG && !item.isDavPro && !item.isTokeniZ && !item.isNijaDiiA && (
+                                    <p className="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase">
+                                        {item.subtitle}
+                                    </p>
+                                )}
+
+                                {/* Decorative circuit lines */}
+                                {!item.isCustomLogo && !item.isSmacG && !item.isDavPro && !item.isTokeniZ && !item.isNijaDiiA && (
+                                    <div className="absolute bottom-4 right-4 w-20 h-20 opacity-10">
+                                        <svg viewBox="0 0 100 100" className={item.color}>
+                                            <path d="M10,90 L90,90 L90,10" fill="none" stroke="currentColor" strokeWidth="2" />
+                                            <circle cx="10" cy="90" r="3" fill="currentColor" />
+                                            <circle cx="90" cy="10" r="3" fill="currentColor" />
+                                        </svg>
+                                    </div>
+                                )}
+                            </div>
                         </div>
+                    </div>
 
-                        {/* Universal Corner Accents */}
-                        <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${item.color.replace('text-', 'from-')}/10 to-transparent rounded-bl-[100px] pointer-events-none`} />
-                        <div className={`absolute bottom-0 left-0 w-24 h-24 bg-gradient-to-tr ${item.color.replace('text-', 'from-')}/5 to-transparent rounded-tr-[80px] pointer-events-none`} />
+                    {/* Back Side */}
+                    <div
+                        className="absolute inset-0 w-full h-full rounded-2xl p-[2px] bg-gradient-to-br from-nijaPurple to-nijaGreen overflow-hidden"
+                        style={{
+                            backfaceVisibility: 'hidden',
+                            WebkitBackfaceVisibility: 'hidden',
+                            transform: 'rotateX(180deg)',
+                            transformStyle: 'preserve-3d'
+                        }}
+                    >
+                        <div className="w-full h-full rounded-[14px] p-6 bg-gray-800 overflow-hidden flex flex-col justify-center relative items-center">
+                            {/* Circuit Pattern Background */}
+                            <div className="absolute inset-0 opacity-10 pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <pattern id={`circuit-back-${idx}`} x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+                                        <path d="M0 20 H40 M20 0 V40" stroke="white" strokeWidth="1" fill="none" />
+                                        <circle cx="20" cy="20" r="2" fill="white" />
+                                    </pattern>
+                                    <rect width="100%" height="100%" fill={`url(#circuit-back-${idx})`} />
+                                </svg>
+                            </div>
 
-                        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full">
-                            {item.isNijaDiiA ? (
-                                /* NijaDiiA Custom Logo */
-                                <NijaDiiALogo />
-                            ) : item.isTokeniZ ? (
-                                /* TokeniZ Custom Logo */
-                                <TokeniZLogo />
-                            ) : item.isDavPro ? (
-                                /* DAVPro Custom Logo */
-                                <DAVProLogo />
-                            ) : item.isSmacG ? (
-                                /* SmaCG Custom Logo */
-                                <SmaCGLogo />
-                            ) : item.isCustomLogo ? (
-                                /* Nija Wallet Custom Logo */
-                                <div className="mb-4">
-                                    <NijaWalletLogo className="w-40 h-40" />
-                                </div>
-                            ) : (
-                                <div className={`mb-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800 ${item.color}`}>
-                                    <item.icon size={40} strokeWidth={1.5} />
-                                </div>
-                            )}
-
-                            {!item.isSmacG && !item.isDavPro && !item.isTokeniZ && !item.isNijaDiiA && (item.isCustomLogo ? (
-                                /* Nija Wallet gradient text */
-                                <h3 className="text-3xl font-bold mb-3 font-heading bg-gradient-to-r from-nijaGreen to-nijaPurple bg-clip-text text-transparent">
-                                    {item.title.toLowerCase()}
-                                </h3>
-                            ) : (
-                                <h3 className={`text-2xl font-bold mb-3 ${item.color} font-heading`}>
+                            <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
+                                <h3 className="text-xl font-bold mb-4 text-white font-heading">
                                     {item.title}
                                 </h3>
-                            ))}
-
-                            {!item.isCustomLogo && !item.isSmacG && !item.isDavPro && !item.isTokeniZ && !item.isNijaDiiA && (
-                                <p className="text-xs font-semibold tracking-widest text-gray-400 dark:text-gray-500 uppercase">
-                                    {item.subtitle}
+                                <p className="text-white/90 text-sm leading-relaxed mb-6">
+                                    {item.backContent}
                                 </p>
-                            )}
+                                <span className="text-nijaGreen font-semibold text-sm">Click to explore →</span>
+                            </div>
 
                             {/* Decorative circuit lines */}
-                            {!item.isCustomLogo && !item.isSmacG && !item.isDavPro && !item.isTokeniZ && !item.isNijaDiiA && (
-                                <div className="absolute bottom-4 right-4 w-20 h-20 opacity-10">
-                                    <svg viewBox="0 0 100 100" className={item.color}>
-                                        <path d="M10,90 L90,90 L90,10" fill="none" stroke="currentColor" strokeWidth="2" />
-                                        <circle cx="10" cy="90" r="3" fill="currentColor" />
-                                        <circle cx="90" cy="10" r="3" fill="currentColor" />
-                                    </svg>
-                                </div>
-                            )}
+                            <div className="absolute bottom-4 right-4 w-20 h-20 opacity-20">
+                                <svg viewBox="0 0 100 100" className="text-white">
+                                    <path d="M10,90 L90,90 L90,10" fill="none" stroke="currentColor" strokeWidth="2" />
+                                    <circle cx="10" cy="90" r="3" fill="currentColor" />
+                                    <circle cx="90" cy="10" r="3" fill="currentColor" />
+                                </svg>
+                            </div>
+                            <div className="absolute top-4 left-4 w-16 h-16 opacity-20">
+                                <svg viewBox="0 0 100 100" className="text-white">
+                                    <path d="M90,10 L10,10 L10,90" fill="none" stroke="currentColor" strokeWidth="2" />
+                                    <circle cx="90" cy="10" r="3" fill="currentColor" />
+                                    <circle cx="10" cy="90" r="3" fill="currentColor" />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                {/* Back Side */}
-                <div
-                    className="absolute inset-0 w-full h-full rounded-2xl p-[2px] bg-gradient-to-br from-nijaPurple to-nijaGreen overflow-hidden"
-                    style={{
-                        backfaceVisibility: 'hidden',
-                        WebkitBackfaceVisibility: 'hidden',
-                        transform: 'rotateX(180deg)',
-                        transformStyle: 'preserve-3d'
-                    }}
-                >
-                    <div className="w-full h-full rounded-[14px] p-6 bg-gray-800 overflow-hidden flex flex-col justify-center relative items-center">
-                        {/* Circuit Pattern Background */}
-                        <div className="absolute inset-0 opacity-10 pointer-events-none">
-                            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
-                                <pattern id={`circuit-back-${idx}`} x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                                    <path d="M0 20 H40 M20 0 V40" stroke="white" strokeWidth="1" fill="none" />
-                                    <circle cx="20" cy="20" r="2" fill="white" />
-                                </pattern>
-                                <rect width="100%" height="100%" fill={`url(#circuit-back-${idx})`} />
-                            </svg>
-                        </div>
-
-                        <div className="relative z-10 text-center flex flex-col items-center justify-center h-full">
-                            <h3 className="text-xl font-bold mb-4 text-white font-heading">
-                                {item.title}
-                            </h3>
-                            <p className="text-white/90 text-sm leading-relaxed mb-6">
-                                {item.backContent}
-                            </p>
-                            <a
-                                href={`/ecosystem/${item.id}`}
-                                className="px-6 py-2 border-2 border-sky-300 text-sky-300 font-semibold rounded-md hover:bg-sky-300/10 hover:shadow-[0_0_20px_rgba(125,211,252,0.5)] transition-all duration-300 cursor-pointer inline-block"
-                            >
-                                {item.title}
-                            </a>
-                        </div>
-
-                        {/* Decorative circuit lines */}
-                        <div className="absolute bottom-4 right-4 w-20 h-20 opacity-20">
-                            <svg viewBox="0 0 100 100" className="text-white">
-                                <path d="M10,90 L90,90 L90,10" fill="none" stroke="currentColor" strokeWidth="2" />
-                                <circle cx="10" cy="90" r="3" fill="currentColor" />
-                                <circle cx="90" cy="10" r="3" fill="currentColor" />
-                            </svg>
-                        </div>
-                        <div className="absolute top-4 left-4 w-16 h-16 opacity-20">
-                            <svg viewBox="0 0 100 100" className="text-white">
-                                <path d="M90,10 L10,10 L10,90" fill="none" stroke="currentColor" strokeWidth="2" />
-                                <circle cx="90" cy="10" r="3" fill="currentColor" />
-                                <circle cx="10" cy="90" r="3" fill="currentColor" />
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </Link>
     );
 }
