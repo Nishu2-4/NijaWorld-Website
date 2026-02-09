@@ -31,6 +31,7 @@ import SupplyChainTraceabilityArticle from './pages/SupplyChainTraceabilityArtic
 import Technologies from './pages/Technologies';
 import TokenisedLoyaltyArticle from './pages/TokenisedLoyaltyArticle';
 import VerifiableIdentityArticle from './pages/VerifiableIdentityArticle';
+import Blogs from './pages/Blogs';
 
 function App() {
   const location = useLocation();
@@ -68,6 +69,7 @@ function App() {
         <Route path='/insights/traceability-and-provenance-for-modern-supply-chains' element={<SupplyChainTraceabilityArticle />} />
         <Route path='/insights/verifiable-identity-for-partner-ecosystems' element={<VerifiableIdentityArticle />} />
         <Route path='/insights/tokenised-loyalty-programs-with-governance' element={<TokenisedLoyaltyArticle />} />
+        <Route path='/blogs' element={<Blogs />} />
         <Route path='/media' element={<Media />} />
         <Route path='/partners' element={<Partners />} />
         <Route path='/contact' element={<Contact />} />

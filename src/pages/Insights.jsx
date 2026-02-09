@@ -117,6 +117,51 @@ export default function Insights() {
                 </div>
             </section>
 
+
+            {/* Blog Invitation Section */}
+            <section
+                className="relative py-24 bg-cover bg-center overflow-hidden"
+                style={{ backgroundImage: 'url(/blog-section-bg.jpg)' }}
+            >
+                {/* Dark Overlay for text readability */}
+                <div className="absolute inset-0 bg-black/75"></div>
+
+                <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        {/* Label */}
+                        <span className="inline-block mb-6 px-4 py-1.5 text-sm font-medium rounded-full bg-nijaGreen/10 text-nijaGreen uppercase tracking-wide border border-nijaGreen/20">
+                            More to Explore
+                        </span>
+
+                        {/* Heading */}
+                        <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+                            Dive Deeper Into Our Blog
+                        </h2>
+
+                        {/* Subtitle */}
+                        <p className="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+                            Stay up to date with the latest trends, insights, and innovations in blockchain, AI, cybersecurity, and the distributed economy. Explore our collection of articles and thought leadership.
+                        </p>
+
+                        {/* CTA Button */}
+                        <Link
+                            to="/blogs"
+                            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-medium transition-all bg-nijaGreen hover:bg-nijaGreen/90 text-white shadow-lg shadow-nijaGreen/30 hover:shadow-xl hover:shadow-nijaGreen/40 hover:scale-105"
+                        >
+                            Read Our Blog
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
+
             <Footer />
         </motion.div>
     );

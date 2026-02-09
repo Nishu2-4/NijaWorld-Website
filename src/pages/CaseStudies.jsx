@@ -133,7 +133,7 @@ export default function CaseStudies() {
                         transition={{ duration: 0.5, delay: 0.4 }}
                         className="text-center mt-16"
                     >
-                        <button className="border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-8 py-3 rounded-full font-medium transition-all hover:bg-nijaGreen hover:text-white hover:border-nijaGreen hover:shadow-lg hover:shadow-nijaGreen/50">
+                        <button className="border-2 border-nijaGreen text-nijaGreen px-8 py-3 rounded-full font-medium transition-all hover:bg-nijaGreen hover:text-white hover:shadow-lg hover:shadow-nijaGreen/50">
                             Browse All Case Studies
                         </button>
                     </motion.div>
