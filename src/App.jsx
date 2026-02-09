@@ -19,6 +19,12 @@ import CaseStudyPrivateCredit from './pages/CaseStudyPrivateCredit';
 import CaseStudyRealEstate from './pages/CaseStudyRealEstate';
 import Contact from './pages/Contact';
 import CybersecurityPage from './pages/CybersecurityPage';
+import EcosystemPage from './pages/EcosystemPage';
+import NijaWalletPage from './pages/NijaWalletPage';
+import NijaDiiAPage from './pages/NijaDiiAPage';
+import SmaCGPage from './pages/SmaCGPage';
+import TokeniZPage from './pages/TokeniZPage';
+import DAVProPage from './pages/DAVProPage';
 import Home from './pages/Home';
 import Insights from './pages/Insights';
 import Join from './pages/Join';
@@ -57,6 +63,12 @@ function App() {
         <Route path='/technologies/cybersecurity/policy-compliance' element={<PolicyCompliancePage />} />
         <Route path='/technologies/cybersecurity/incident-response' element={<IncidentResponsePage />} />
         <Route path='/solutions' element={<SolutionsPage />} />
+        <Route path='/ecosystem' element={<EcosystemPage />} />
+        <Route path='/ecosystem/nija-wallet' element={<NijaWalletPage />} />
+        <Route path='/ecosystem/nija-diia' element={<NijaDiiAPage />} />
+        <Route path='/ecosystem/smac-g' element={<SmaCGPage />} />
+        <Route path='/ecosystem/tokeniz' element={<TokeniZPage />} />
+        <Route path='/ecosystem/davpro' element={<DAVProPage />} />
         <Route path='/solutions/rwa-liquidity' element={<RWALiquidityPage />} />
         <Route path='/case-studies' element={<CaseStudies />} />
         <Route path='/case-studies/rwa-liquidity-private-credit-notes' element={<CaseStudyPrivateCredit />} />
