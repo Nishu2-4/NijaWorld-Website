@@ -173,9 +173,9 @@ export default function SolutionsPage() {
                                             <span>End-to-end solutions</span>
                                         </li>
                                     </ul>
-                                    <button className="bg-nijaGreen hover:bg-green-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 hover:scale-105 transform">
+                                    <Link to="/ecosystem" className="inline-block bg-nijaGreen hover:bg-green-500 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 hover:scale-105 transform">
                                         Explore Ecosystem →
-                                    </button>
+                                    </Link>
                                 </div>
 
                                 {/* Image */}
