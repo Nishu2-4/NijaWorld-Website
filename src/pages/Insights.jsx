@@ -44,8 +44,12 @@ export default function Insights() {
             <Navbar />
 
             {/* Hero Section */}
-            <section className="pt-32 pb-12 bg-gradient-to-br from-[#0B0F14] via-[#141B28] to-[#0B0F14] text-white relative z-10">
-                <div className="max-w-7xl mx-auto px-6">
+            <section
+                className="pt-32 pb-20 bg-cover bg-center relative overflow-hidden"
+                style={{ backgroundImage: 'url(/insights-hero.jpg)' }}
+            >
+                <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/60 to-black/40" />
+                <div className="max-w-7xl mx-auto px-6 relative z-10">
                     <div className="max-w-3xl">
                         <motion.h1
                             initial={{ opacity: 0, y: 10 }}

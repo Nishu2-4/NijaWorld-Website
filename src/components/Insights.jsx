@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Newspaper, Video, Network, ShieldCheck, Award } from 'lucide-react';
+import { ArrowRight, Calendar, Mic, Network, ShieldCheck, Award } from 'lucide-react';
 
 export function Insights() {
     // Latest 3 Insights (from Insights page, sorted by publish date)
@@ -31,21 +31,22 @@ export function Insights() {
         }
     ];
 
-    // Dummy Media items (events/press/webinars)
     const mediaItems = [
         {
-            type: 'Webinar',
-            title: 'Enterprise Blockchain: From Pilot to Production',
-            description: 'Join our experts as they discuss real-world implementation strategies, governance frameworks, and lessons learned from deploying blockchain solutions at scale.',
-            date: 'Feb 15, 2026',
-            icon: Video
+            type: 'Event',
+            title: 'Fintech India Summit & Awards 2022',
+            description: 'Nanjunda Pratap Palecanda Speaking at Fintech India Summit & Awards 2022 About Distributed Economy and Tokenisation.',
+            date: '17 & 18 Nov 2022',
+            icon: Calendar,
+            link: '/media#fintech-india-summit'
         },
         {
-            type: 'Press',
-            title: 'Nija Featured in FinTech Innovation Report 2026',
-            description: 'Recognised for pioneering enterprise-grade blockchain and AI solutions that bridge the gap between innovation and institutional requirements.',
-            date: 'Jan 28, 2026',
-            icon: Newspaper
+            type: 'Fireside Chat',
+            title: 'The Future of Tokenization in the BFSI Sector',
+            description: 'An insightful event exploring how tokenization can transform the BFSI sector, addressing compliance, infrastructure, and the distributed economy model.',
+            date: '7 Nov 2024',
+            icon: Mic,
+            link: '/media#fireside-chat-tokenization'
         }
     ];
 
@@ -126,8 +127,9 @@ export function Insights() {
                         </h3>
                         <div className="space-y-4 flex-grow flex flex-col">
                             {mediaItems.map((item, idx) => (
-                                <div
+                                <Link
                                     key={idx}
+                                    to={item.link}
                                     className="group flex items-start gap-4 p-4 bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/5 rounded-xl hover:border-nijaGreen/50 hover:bg-nijaGreen/5 transition-all duration-200 cursor-pointer flex-1"
                                 >
                                     <div className="p-2 rounded-lg bg-nijaGreen/10 text-nijaGreen flex-shrink-0">
@@ -150,7 +152,7 @@ export function Insights() {
                                         </p>
                                     </div>
                                     <ArrowRight size={16} className="text-gray-400 group-hover:text-nijaGreen transition-colors flex-shrink-0 mt-1" />
-                                </div>
+                                </Link>
                             ))}
                         </div>
                     </motion.div>
