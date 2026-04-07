@@ -128,7 +128,7 @@ export function Pillars() {
                                             delay: 0.2,
                                             ease: "easeInOut"
                                         }}
-                                        className={`bg-gradient-to-br ${pillar.gradient} dark:bg-gradient-to-br dark:${pillar.gradient} border border-${pillar.color}/20 dark:border-${pillar.color}/30 rounded-2xl p-6 hover:shadow-2xl hover:shadow-${pillar.color}/20 transition-all duration-300 h-full flex flex-col justify-between ${pillar.color === 'nijaPurple' ? 'card-glow-purple' : 'card-glow-green'}`}
+                                        className={`bg-gradient-to-br ${pillar.gradient} dark:bg-gradient-to-br dark:${pillar.gradient} border border-${pillar.color}/20 dark:border-${pillar.color}/30 rounded-2xl p-6 hover:shadow-2xl hover:shadow-${pillar.color}/20 transition-all duration-300 h-full flex flex-col justify-between hover:border-${pillar.color} dark:hover:border-${pillar.color} hover:border-2 ${pillar.color === 'nijaPurple' ? 'card-glow-purple' : 'card-glow-green'}`}
                                     >
                                         {/* Icon & Title Row */}
                                         <div className="flex items-center gap-4 mb-4">
@@ -250,7 +250,7 @@ export function Pillars() {
                                         ease: "easeInOut"
                                     }}
                                     whileHover={{ scale: 1.02 }}
-                                    className={`bg-gradient-to-br ${pillar.gradient} dark:bg-gradient-to-br dark:${pillar.gradient} border border-${pillar.color}/20 dark:border-${pillar.color}/30 rounded-2xl p-8 hover:shadow-2xl hover:shadow-${pillar.color}/20 transition-all duration-300 cursor-pointer group ${pillar.color === 'nijaPurple' ? 'card-glow-purple' : 'card-glow-green'}`}
+                                    className={`bg-gradient-to-br ${pillar.gradient} dark:bg-gradient-to-br dark:${pillar.gradient} border border-${pillar.color}/20 dark:border-${pillar.color}/30 rounded-2xl p-8 hover:shadow-2xl hover:shadow-${pillar.color}/20 transition-all duration-300 cursor-pointer group hover:border-${pillar.color} dark:hover:border-${pillar.color} hover:border-2 ${pillar.color === 'nijaPurple' ? 'card-glow-purple' : 'card-glow-green'}`}
                                 >
                                     {/* Icon & Title Row */}
                                     <div className="flex items-center gap-4 mb-4">
