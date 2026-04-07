@@ -1,3 +1,6 @@
+# Seed scripts
+backend/seed/
+
 # Logs
 logs
 *.log

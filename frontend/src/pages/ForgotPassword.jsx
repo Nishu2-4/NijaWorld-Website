@@ -75,7 +75,7 @@ export default function ForgotPassword() {
                                     The link expires in <span className="text-white font-medium">15 minutes</span>.
                                 </p>
                                 <Link
-                                    to="/blogs"
+                                    to="/admin-login"
                                     className="inline-block mt-2 text-sm text-gray-400 hover:text-white transition-colors"
                                 >
                                     ← Back to login
@@ -127,7 +127,7 @@ export default function ForgotPassword() {
 
                                 <p className="text-center text-sm text-gray-500 mt-4">
                                     Remember your password?{' '}
-                                    <Link to="/blogs" className="text-nijaGreen hover:text-nijaGreen/80 transition-colors">
+                                    <Link to="/admin-login" className="text-nijaGreen hover:text-nijaGreen/80 transition-colors">
                                         Back to login
                                     </Link>
                                 </p>

@@ -1,0 +1,3 @@
+# Netlify SPA fallback — serve index.html for all routes
+# This ensures /admin-login, /dashboard etc. work on direct URL access or page refresh
+/*    /index.html   200

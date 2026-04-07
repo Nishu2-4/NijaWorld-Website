@@ -38,16 +38,17 @@ import RWALiquidityPage from './pages/RWALiquidityPage';
 import Signup from './pages/Signup';
 import SolutionsPage from './pages/SolutionsPage';
 import SupplyChainPage from './pages/SupplyChainPage';
-import SupplyChainTraceabilityArticle from './pages/SupplyChainTraceabilityArticle';
 import Technologies from './pages/Technologies';
-import TokenisedLoyaltyArticle from './pages/TokenisedLoyaltyArticle';
-import VerifiableIdentityArticle from './pages/VerifiableIdentityArticle';
 import Blogs from './pages/Blogs';
+
 import BlogPost from './pages/BlogPost';
 import Dashboard from './pages/Dashboard';
+import AdminLogin from './pages/AdminLogin';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import { AuthProvider } from './context/AuthContext';
+import InsightArticle from './pages/InsightArticle';
+import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   const location = useLocation();
@@ -91,16 +92,21 @@ function App() {
           <Route path='/case-studies/rwa-liquidity-real-estate-cashflows' element={<CaseStudyRealEstate />} />
           <Route path='/case-studies/:slug' element={<CaseStudyDynamic />} />
           <Route path='/insights' element={<Insights />} />
+          <Route path='/insights/:slug' element={<InsightArticle />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/join' element={<Join />} />
           <Route path='/signup' element={<Signup />} />
-          <Route path='/insights' element={<Insights />} />
-          <Route path='/insights/traceability-and-provenance-for-modern-supply-chains' element={<SupplyChainTraceabilityArticle />} />
-          <Route path='/insights/verifiable-identity-for-partner-ecosystems' element={<VerifiableIdentityArticle />} />
-          <Route path='/insights/tokenised-loyalty-programs-with-governance' element={<TokenisedLoyaltyArticle />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:slug' element={<BlogPost />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/admin-login' element={<AdminLogin />} />
+          <Route
+            path='/dashboard'
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
           <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path='/reset-password/:token' element={<ResetPassword />} />
           <Route path='/media' element={<Media />} />

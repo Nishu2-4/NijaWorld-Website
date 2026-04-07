@@ -8,6 +8,8 @@ import UsersSection from './dashboard/UsersSection';
 import SettingsSection from './dashboard/SettingsSection';
 import PlaceholderSection from './dashboard/PlaceholderSection';
 import HomeSection from './dashboard/HomeSection';
+import InsightsSection from './dashboard/InsightsSection';
+import ContactsSection from './dashboard/ContactsSection';
 
 const NAV = [
     { id: 'home', label: 'Home', icon: '🏠' },
@@ -18,6 +20,7 @@ const NAV = [
     { id: 'partners', label: 'Partners', icon: '🤝' },
     { id: 'footer', label: 'Footer', icon: '🔗' },
     { id: 'users', label: 'Users', icon: '👥', adminOnly: true },
+    { id: 'contacts', label: 'Customer Contacts', icon: '📬', adminOnly: true },
     { id: 'settings', label: 'Settings', icon: '⚙️' },
 ];
 
@@ -30,6 +33,7 @@ const SECTION_LABELS = {
     partners: 'Partners',
     footer: 'Footer',
     users: 'Users',
+    contacts: 'Customer Contacts',
     settings: 'Settings',
 };
 
@@ -41,7 +45,7 @@ export default function Dashboard() {
     const [sidebarOpen, setSidebarOpen] = useState(true);
 
     useEffect(() => {
-        if (!token) navigate('/blogs');
+        if (!token) navigate('/admin-login', { replace: true });
     }, [token, navigate]);
 
     const flash = (msg) => {
@@ -65,9 +69,16 @@ export default function Dashboard() {
                     {sidebarOpen && (
                         <button
                             onClick={() => navigate('/')}
-                            className="text-[#00c896] font-bold text-base tracking-wide hover:opacity-80 transition-opacity"
+                            className="hover:opacity-80 transition-opacity"
+                            title="Go to NijaWorld Home"
                         >
-                            NijaWorld
+                            <div className="bg-[#0b1120] rounded-lg px-2 py-1">
+                                <img
+                                    src="/nija-world-green.png"
+                                    alt="NijaWorld Logo"
+                                    className="h-14 w-auto object-contain"
+                                />
+                            </div>
                         </button>
                     )}
                     <button
@@ -167,11 +178,12 @@ export default function Dashboard() {
                     {activeTab === 'home' && <HomeSection user={user} onNavigate={setActiveTab} />}
                     {activeTab === 'case-study' && <CaseStudySection token={token} user={user} flash={flash} />}
                     {activeTab === 'blogs' && <BlogSection token={token} user={user} flash={flash} />}
-                    {activeTab === 'insights' && <PlaceholderSection title="Insights" icon="💡" description="Manage insight articles and thought leadership content." />}
+                    {activeTab === 'insights' && <InsightsSection token={token} user={user} flash={flash} />}
                     {activeTab === 'media' && <PlaceholderSection title="Media" icon="🎬" description="Manage images, videos, and downloadable assets." />}
                     {activeTab === 'partners' && <PlaceholderSection title="Partners" icon="🤝" description="Manage partner logos, profiles, and relationships." />}
                     {activeTab === 'footer' && <PlaceholderSection title="Footer" icon="🔗" description="Manage footer links, columns, and legal text." />}
                     {activeTab === 'users' && isAdmin && <UsersSection token={token} user={user} flash={flash} />}
+                    {activeTab === 'contacts' && isAdmin && <ContactsSection token={token} flash={flash} />}
                     {activeTab === 'settings' && <SettingsSection token={token} user={user} />}
                 </div>
             </main>

@@ -8,6 +8,8 @@ const authRoutes = require("./routes/authRoutes");
 const blogRoutes = require("./routes/blogRoutes");
 const userRoutes = require("./routes/userRoutes");
 const caseStudyRoutes = require("./routes/caseStudyRoutes");
+const insightRoutes = require("./routes/insightRoutes");
+const contactRoutes = require("./routes/contactRoutes");
 
 // Connect to MongoDB
 connectDB();
@@ -48,6 +50,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/blogs", blogRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/case-studies", caseStudyRoutes);
+app.use("/api/insights", insightRoutes);
+app.use("/api/contact", contactRoutes);
 
 // ─────────────────────────────────────────────
 // 404 Handler — unmatched routes
