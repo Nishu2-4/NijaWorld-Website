@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import {
     Coins,
     Network,
@@ -20,6 +21,7 @@ export function Solutions() {
             baseColor: 'nijaGreen',
             bulletColor: 'bg-nijaGreen',
             cta: 'Explore Tokenisation',
+            link: '/solutions/tokenisation',
             delay: 0
         },
         {
@@ -31,6 +33,7 @@ export function Solutions() {
             baseColor: 'nijaGreen',
             bulletColor: 'bg-nijaGreen',
             cta: 'Explore Supply Chain',
+            link: '/solutions/supply-chain',
             delay: 0.1
         },
         {
@@ -42,6 +45,7 @@ export function Solutions() {
             baseColor: 'nijaGreen',
             bulletColor: 'bg-nijaGreen',
             cta: 'Explore Identity',
+            link: '/solutions/identity',
             delay: 0.2
         },
         {
@@ -53,6 +57,7 @@ export function Solutions() {
             baseColor: 'nijaGreen',
             bulletColor: 'bg-nijaGreen',
             cta: 'Explore Loyalty',
+            link: '/solutions/loyalty',
             delay: 0.3
         },
         {
@@ -64,6 +69,7 @@ export function Solutions() {
             baseColor: 'nijaGreen',
             bulletColor: 'bg-nijaGreen',
             cta: 'Explore Advisory',
+            link: '/solutions/advisory',
             delay: 0.4
         },
         {
@@ -75,6 +81,7 @@ export function Solutions() {
             baseColor: 'nijaGreen',
             bulletColor: 'bg-nijaGreen',
             cta: 'Explore RWA Liquidity',
+            link: '/solutions/rwa-liquidity',
             delay: 0.5
         }
     ];
@@ -118,10 +125,10 @@ export function Solutions() {
                                 scale: 1.01,
                                 transition: { type: 'spring', stiffness: 300, damping: 20 }
                             }}
-                            className={`group relative flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[380px] p-8 bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl transition-[box-shadow,border-color] duration-300 hover:shadow-2xl hover:shadow-${solution.baseColor}/20 hover:border-${solution.baseColor}/50`}
+                            className={`group relative flex flex-col w-full md:w-[calc(50%-1rem)] lg:w-[380px] p-8 bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl transition-all duration-300 hover:shadow-2xl hover:shadow-nijaGreen/20 hover:border-nijaGreen dark:hover:border-nijaGreen hover:border-2 card-glow-green`}
                         >
                             {/* Icon & Title Row */}
-                            <div className="flex items-center gap-4 mb-6">
+                            < div className="flex items-center gap-4 mb-6" >
                                 <div className={`p-3 rounded-xl bg-gray-50 dark:bg-white/5 w-fit flex-shrink-0 ${solution.color} transition-colors duration-300 group-hover:bg-${solution.baseColor} group-hover:text-white`}>
                                     <solution.icon size={32} strokeWidth={1.5} />
                                 </div>
@@ -146,11 +153,12 @@ export function Solutions() {
                             </ul>
 
                             {/* CTA Button - Matching Pillars Style */}
-                            <button
+                            <Link
+                                to={solution.link}
                                 className={`w-full px-6 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 bg-${solution.baseColor}/10 hover:bg-${solution.baseColor} text-${solution.baseColor} hover:text-white border border-${solution.baseColor}/30 hover:shadow-lg hover:shadow-${solution.baseColor}/50`}
                             >
                                 {solution.cta} <ArrowRight size={18} />
-                            </button>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>
@@ -162,12 +170,12 @@ export function Solutions() {
                     viewport={{ once: true }}
                     className="text-center"
                 >
-                    <button className="px-8 py-3 rounded-full border border-nijaGreen text-nijaGreen font-medium hover:bg-nijaGreen hover:text-white hover:shadow-lg hover:shadow-nijaGreen/30 transition-all duration-300">
+                    <Link to="/solutions" className="px-8 py-3 rounded-full border border-nijaGreen text-nijaGreen font-medium hover:bg-nijaGreen hover:text-white hover:shadow-lg hover:shadow-nijaGreen/30 transition-all duration-300">
                         View All Solutions →
-                    </button>
+                    </Link>
                 </motion.div>
-            </div>
-        </section>
+            </div >
+        </section >
     );
 }
 

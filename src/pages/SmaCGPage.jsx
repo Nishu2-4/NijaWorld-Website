@@ -127,44 +127,124 @@ export default function SmaCGPage() {
                         Perfect For
                     </h2>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
-                                <Layers size={20} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-smac-1" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-smac-1)" />
+                                </svg>
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Supply Chain Agreements</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Automate payments upon confirmed deliveries</p>
+                            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[50px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[40px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
+                                    <Layers size={20} />
+                                </div>
+                                <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Supply Chain Agreements</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Automate payments upon confirmed deliveries</p>
+                            </div>
                         </div>
 
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
-                                <CheckCircle size={20} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-smac-2" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-smac-2)" />
+                                </svg>
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Service Level Agreements</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Ensure automatic compliance monitoring and enforcement</p>
+                            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[50px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[40px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
+                                    <CheckCircle size={20} />
+                                </div>
+                                <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Service Level Agreements</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Ensure automatic compliance monitoring and enforcement</p>
+                            </div>
                         </div>
 
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
-                                <Handshake size={20} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-smac-3" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-smac-3)" />
+                                </svg>
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Revenue Sharing</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Distribute earnings transparently according to predefined formulas</p>
+                            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[50px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[40px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
+                                    <Handshake size={20} />
+                                </div>
+                                <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Revenue Sharing</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Distribute earnings transparently according to predefined formulas</p>
+                            </div>
                         </div>
 
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
-                            <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
-                                <FileCode size={20} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-smac-4" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-smac-4)" />
+                                </svg>
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Digital Asset Transfers</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Securely exchange ownership with verified conditions</p>
+                            <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[50px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-12 h-12 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[40px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
+                                    <FileCode size={20} />
+                                </div>
+                                <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Digital Asset Transfers</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Securely exchange ownership with verified conditions</p>
+                            </div>
                         </div>
 
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-2">
-                            <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
-                                <Globe size={20} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow md:col-span-2 lg:col-span-2 relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-smac-5" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-smac-5)" />
+                                </svg>
                             </div>
-                            <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Cross-Border Transactions</h3>
-                            <p className="text-sm text-gray-600 dark:text-gray-400">Eliminate intermediaries and reduce international processing times</p>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-10 h-10 bg-nijaGreen/10 text-nijaGreen rounded-lg flex items-center justify-center mb-4">
+                                    <Globe size={20} />
+                                </div>
+                                <h3 className="font-bold text-lg mb-2 text-gray-800 dark:text-gray-200">Cross-Border Transactions</h3>
+                                <p className="text-sm text-gray-600 dark:text-gray-400">Eliminate intermediaries and reduce international processing times</p>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

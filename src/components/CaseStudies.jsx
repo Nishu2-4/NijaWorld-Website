@@ -54,7 +54,7 @@ export function CaseStudies() {
                                 scale: 1.01,
                                 transition: { type: 'spring', stiffness: 300, damping: 20 }
                             }}
-                            className="group relative flex flex-col bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 transition-[box-shadow,border-color] duration-300 hover:shadow-2xl hover:shadow-nijaGreen/20 hover:border-nijaGreen/50"
+                            className="group relative flex flex-col bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-nijaGreen/20 hover:border-nijaGreen dark:hover:border-nijaGreen hover:border-2 card-glow-green"
                         >
                             {/* Fixed height wrapper for Header + Tags to align separator line */}
                             <div className="flex flex-col min-h-[120px]">

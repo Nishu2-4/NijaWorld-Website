@@ -77,58 +77,140 @@ export default function NijaDiiAPage() {
                 >
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {/* Self-Evolving AI Kernel */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Brain className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-diia-1" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-diia-1)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Self-Evolving AI Kernel</h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                Our groundbreaking "God Kernel" breeds, mutates, and optimizes trading agents in real-time, constantly improving performance through evolutionary algorithms.
-                            </p>
+                            {/* Corner Accents */}
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Brain className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Self-Evolving AI Kernel</h3>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                    Our groundbreaking "God Kernel" breeds, mutates, and optimizes trading agents in real-time, constantly improving performance through evolutionary algorithms.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Zero-Loss Protocol */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <ShieldCheck className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-diia-2" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-diia-2)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Zero-Loss Enforcement</h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                All potential trades undergo rigorous simulation and must achieve minimum 80% win probability before execution is authorized.
-                            </p>
+                            {/* Corner Accents */}
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <ShieldCheck className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Zero-Loss Enforcement</h3>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                    All potential trades undergo rigorous simulation and must achieve minimum 80% win probability before execution is authorized.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Multi-Agent Ecosystem */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Network className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-diia-3" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-diia-3)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Multi-Agent Ecosystem</h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                30+ specialized agents work in concert across neural, genetic, and reinforcement learning frameworks to analyze markets from every perspective.
-                            </p>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Network className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Multi-Agent Ecosystem</h3>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                    30+ specialized agents work in concert across neural, genetic, and reinforcement learning frameworks to analyze markets from every perspective.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Quantum Analytics */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Zap className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-diia-4" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-diia-4)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Quantum Analytics Engine</h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                Advanced predictive modeling incorporating quantum principles of interference, entanglement, and spectral forecasting for unprecedented market insight.
-                            </p>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Zap className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Quantum Analytics Engine</h3>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                    Advanced predictive modeling incorporating quantum principles of interference, entanglement, and spectral forecasting for unprecedented market insight.
+                                </p>
+                            </div>
                         </div>
 
                         {/* Hyperdimensional Pattern Recognition */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg md:col-span-2 lg:col-span-2">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Activity className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg md:col-span-2 lg:col-span-2 relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-diia-5" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-diia-5)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Hyperdimensional Pattern Recognition</h3>
-                            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-                                Identifies complex trading patterns across 10,000+ dimensions, detecting Fibonacci, Elliot, Harmonic, Fractal, and Geometric signals invisible to conventional analysis.
-                            </p>
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[80px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-20 h-20 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[60px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Activity className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Hyperdimensional Pattern Recognition</h3>
+                                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                                    Identifies complex trading patterns across 10,000+ dimensions, detecting Fibonacci, Elliot, Harmonic, Fractal, and Geometric signals invisible to conventional analysis.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

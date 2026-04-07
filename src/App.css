@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,24 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Card Border Glow - Hover Only */
+.card-glow-green {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-glow-green:hover {
+  box-shadow: 0 0 10px rgba(45, 190, 123, 0.5), 0 0 20px rgba(45, 190, 123, 0.3), 0 0 30px rgba(45, 190, 123, 0.2);
+  border-color: #2DBE7B !important;
+  border-width: 2px;
+}
+
+.card-glow-purple {
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card-glow-purple:hover {
+  box-shadow: 0 0 10px rgba(107, 78, 255, 0.5), 0 0 20px rgba(107, 78, 255, 0.3), 0 0 30px rgba(107, 78, 255, 0.2);
+  border-color: rgba(107, 78, 255, 0.8) !important;
 }

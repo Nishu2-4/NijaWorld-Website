@@ -73,17 +73,11 @@ export function Footer() {
 
                     {/* Left: Logo and Social Media */}
                     <div>
-                        <Link to='/' className='flex items-center gap-1.5 mb-6 hover:opacity-90 transition group'>
+                        <Link to='/' className='flex items-center mb-6 hover:opacity-90 transition group'>
                             <img
-                                src='/nija-logo.png'
-                                alt='NIJA Logo'
-                                className='h-12 w-auto'
-                            />
-                            {/* NIJA WORLD Logo Image - Always green in footer */}
-                            <img
-                                src='/nija-world-green.png'
+                                src='/nija-logo-combined.png'
                                 alt='NIJA WORLD'
-                                className='h-[76px] w-auto'
+                                className='h-64 w-auto'
                             />
                         </Link>
 

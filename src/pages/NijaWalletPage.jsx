@@ -77,73 +77,121 @@ export default function NijaWalletPage() {
 
                     <div className="grid md:grid-cols-3 gap-6">
                         {/* Secure Asset Storage */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Shield className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-wallet-1" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-wallet-1)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Secure Asset Storage</h3>
-                            <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Multi-layer security with advanced encryption and biometric authentication
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Support for diverse assets including cryptocurrencies, tokens, and NFTs
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Intuitive portfolio dashboard for real-time monitoring of your holdings
-                                </li>
-                            </ul>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Shield className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Secure Asset Storage</h3>
+                                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Multi-layer security with advanced encryption and biometric authentication
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Support for diverse assets including cryptocurrencies, tokens, and NFTs
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Intuitive portfolio dashboard for real-time monitoring of your holdings
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Seamless NFT Creation */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Palette className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-wallet-2" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-wallet-2)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Seamless NFT Creation</h3>
-                            <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Direct integration with Nija NFTGen for one-click NFT minting
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Template library for easy artwork transformation into digital collectibles
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Metadata management tools to maximize your NFTs' value and discoverability
-                                </li>
-                            </ul>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Palette className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Seamless NFT Creation</h3>
+                                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Direct integration with Nija NFTGen for one-click NFT minting
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Template library for easy artwork transformation into digital collectibles
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Metadata management tools to maximize your NFTs' value and discoverability
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
 
                         {/* Powerful Ecosystem Connectivity */}
-                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg">
-                            <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
-                                <Link2 className="text-nijaGreen" size={24} />
+                        <div className="bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                            {/* Background Pattern */}
+                            <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+                                <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <pattern id="grid-wallet-3" width="16" height="16" patternUnits="userSpaceOnUse">
+                                            <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#888" strokeWidth="0.5" />
+                                        </pattern>
+                                    </defs>
+                                    <rect width="100%" height="100%" fill="url(#grid-wallet-3)" />
+                                </svg>
                             </div>
-                            <h3 className="text-xl font-bold text-nijaGreen mb-3">Powerful Ecosystem Connectivity</h3>
-                            <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    Exchange integration for frictionless trading across major platforms
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    DAVPro connection for professional-grade digital asset valuation insights
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    SmaC-G compatibility to create and manage smart contracts
-                                </li>
-                                <li className="flex items-start gap-2">
-                                    <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
-                                    TokeniZ access to implement tokenisation strategies
-                                </li>
-                            </ul>
+                            <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-nijaGreen/10 to-transparent rounded-bl-[60px] pointer-events-none" />
+                            <div className="absolute bottom-0 left-0 w-16 h-16 bg-gradient-to-tr from-nijaGreen/5 to-transparent rounded-tr-[50px] pointer-events-none" />
+
+                            <div className="relative z-10">
+                                <div className="w-12 h-12 bg-nijaGreen/10 rounded-lg flex items-center justify-center mb-4">
+                                    <Link2 className="text-nijaGreen" size={24} />
+                                </div>
+                                <h3 className="text-xl font-bold text-nijaGreen mb-3">Powerful Ecosystem Connectivity</h3>
+                                <ul className="space-y-2 text-gray-600 dark:text-gray-400 text-sm">
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        Exchange integration for frictionless trading across major platforms
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        DAVPro connection for professional-grade digital asset valuation insights
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        SmaC-G compatibility to create and manage smart contracts
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <CheckCircle size={16} className="text-nijaGreen mt-0.5 flex-shrink-0" />
+                                        TokeniZ access to implement tokenisation strategies
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </motion.div>

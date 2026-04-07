@@ -54,7 +54,7 @@ export function Security() {
                                 scale: 1.02,
                                 transition: { type: 'spring', stiffness: 300, damping: 20 }
                             }}
-                            className="group bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 hover:border-nijaPurple/50 hover:shadow-2xl hover:shadow-nijaPurple/20 transition-all duration-300"
+                            className="group bg-white/50 dark:bg-white/5 backdrop-blur-md border border-gray-200 dark:border-white/10 rounded-2xl p-6 hover:border-nijaPurple dark:hover:border-nijaPurple hover:border-2 hover:shadow-2xl hover:shadow-nijaPurple/20 transition-all duration-300 card-glow-purple"
                         >
                             {/* Icon */}
                             <div className="mb-5 p-3 rounded-xl bg-nijaPurple/10 w-fit text-nijaPurple group-hover:bg-nijaPurple group-hover:text-white transition-colors duration-300">
