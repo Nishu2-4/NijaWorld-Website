@@ -1,3 +1,6 @@
+# Seed scripts
+backend/seed/
+
 # Logs
 logs
 *.log
@@ -6,6 +9,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
 
 node_modules
 dist

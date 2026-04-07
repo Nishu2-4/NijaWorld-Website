@@ -58,9 +58,14 @@ export function Navbar() {
 
                 {/* Desktop Actions */}
                 <div className='hidden lg:flex gap-3 items-center'>
-                    <button className='border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-medium transition hover:bg-gray-100 dark:hover:bg-gray-800'>
+                    <a
+                        href='/Nija-An-overview.pdf'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        className='border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-lg text-sm font-medium transition hover:bg-gray-100 dark:hover:bg-gray-800'
+                    >
                         Download Overview
-                    </button>
+                    </a>
                     <button className='bg-nijaGreen hover:bg-green-500 text-white px-4 py-2 rounded-lg text-sm font-medium transition shadow-lg shadow-nijaGreen/30'>
                         Request a Demo
                     </button>
@@ -100,9 +105,15 @@ export function Navbar() {
                                 </Link>
                             ))}
                             <div className='flex flex-col gap-4 mt-4'>
-                                <button className='w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800'>
+                                <a
+                                    href='/Nija-An-overview.pdf'
+                                    target='_blank'
+                                    rel='noopener noreferrer'
+                                    className='w-full border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 px-4 py-3 rounded-lg text-sm font-medium hover:bg-gray-100 dark:hover:bg-gray-800 text-center block'
+                                    onClick={() => setIsOpen(false)}
+                                >
                                     Download Overview
-                                </button>
+                                </a>
                                 <button className='w-full bg-nijaGreen hover:bg-green-500 text-white px-4 py-3 rounded-lg text-sm font-medium shadow-lg shadow-nijaGreen/30'>
                                     Request a Demo
                                 </button>
