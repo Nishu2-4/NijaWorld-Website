@@ -39,6 +39,11 @@ import Signup from './pages/Signup';
 import SolutionsPage from './pages/SolutionsPage';
 import SupplyChainPage from './pages/SupplyChainPage';
 import Technologies from './pages/Technologies';
+import AIDataCentresPage from './pages/AIDataCentresPage';
+import AIDataCentresConsultingPage from './pages/AIDataCentresConsultingPage';
+import AIDataCentresTurnkeyPage from './pages/AIDataCentresTurnkeyPage';
+import WhitePapers from './pages/WhitePapers';
+import WhitePaperAIDataCentre from './pages/WhitePaperAIDataCentre';
 import Blogs from './pages/Blogs';
 
 import BlogPost from './pages/BlogPost';
@@ -74,6 +79,11 @@ function App() {
           <Route path='/technologies/cybersecurity/identity-security' element={<IdentitySecurityPage />} />
           <Route path='/technologies/cybersecurity/policy-compliance' element={<PolicyCompliancePage />} />
           <Route path='/technologies/cybersecurity/incident-response' element={<IncidentResponsePage />} />
+          <Route path='/technologies/ai-data-centres' element={<AIDataCentresPage />} />
+          <Route path='/technologies/ai-data-centres/consulting' element={<AIDataCentresConsultingPage />} />
+          <Route path='/technologies/ai-data-centres/consulting/turnkey-solutions' element={<AIDataCentresTurnkeyPage />} />
+          <Route path='/white-papers' element={<WhitePapers />} />
+          <Route path='/white-papers/ai-data-centres' element={<WhitePaperAIDataCentre />} />
           <Route path='/solutions' element={<SolutionsPage />} />
           <Route path='/solutions/tokenisation' element={<TokenisationPage />} />
           <Route path='/solutions/supply-chain' element={<SupplyChainPage />} />
