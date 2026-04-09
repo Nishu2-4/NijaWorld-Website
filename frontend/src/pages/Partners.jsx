@@ -5,7 +5,7 @@ import { Footer } from '../components/Footer';
 
 const partnerCards = [
     {
-        title: 'BLUEBIRD',
+        title: 'BLUBIRD',
         subtitle: 'Management Services',
         image: '/BluBird Management Services.png',
     },
@@ -20,9 +20,9 @@ const partnerCards = [
         image: '/India Blockchain Alliance.png',
     },
     {
-        title: 'FUTURE FAST',
-        subtitle: 'Are you Ready For the ride?',
-        image: '/FutureFast.png',
+        title: 'TRON',
+        subtitle: 'Data Centre',
+        image: '/tron.png',
     },
 ];
 
