@@ -185,6 +185,64 @@ export default function Technologies() {
                 </div>
             </section>
 
+            {/* AI Data Centres — Featured Section */}
+            <section className="py-20 relative z-10 bg-gray-50 dark:bg-[#0d1117]">
+                <div className="max-w-7xl mx-auto px-6">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                    >
+                        <div className="mb-12">
+                            <span className="inline-block mb-4 px-4 py-1.5 text-sm font-medium rounded-full bg-nijaGreen/10 text-nijaGreen uppercase tracking-wide">
+                                New — AI Infrastructure
+                            </span>
+                            <h2 className="text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+                                AI Data Centres
+                            </h2>
+                            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-3xl">
+                                Scalable mini data centres for universities and enterprise research, built on enterprise-grade NVIDIA L40S GPU infrastructure.
+                            </p>
+                        </div>
+
+                        <Link
+                            to="/technologies/ai-data-centres"
+                            className="group block bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden hover:border-nijaGreen dark:hover:border-nijaGreen hover:shadow-2xl hover:shadow-nijaGreen/10 transition-all duration-200"
+                        >
+                            <div className="relative h-56 overflow-hidden">
+                                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-gray-900 via-transparent to-transparent z-10 opacity-80" />
+                                <img
+                                    src="/ai-datacenter-hero.png"
+                                    alt="AI Data Centres"
+                                    className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
+                                />
+                            </div>
+                            <div className="p-8">
+                                <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-nijaGreen transition-colors">
+                                    AI Data Centres for Universities & Enterprise Research
+                                </h3>
+                                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                                    Nija, in partnership with Tron (from Taiwan), designs and deploys scalable AI mini data centres using enterprise-grade NVIDIA L40S GPU infrastructure—built for operational reliability, governance, and future upgrade flexibility.
+                                </p>
+                                <div className="flex flex-wrap gap-3 mb-6">
+                                    {['NVIDIA L40S GPUs', 'Tiered Deployment', 'BlueField-3 DPU', 'Modular Scaling'].map((tag, i) => (
+                                        <span key={i} className="text-xs font-medium px-3 py-1 rounded-full bg-nijaGreen/10 text-nijaGreen border border-nijaGreen/20">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                                <span className="inline-flex items-center gap-2 text-nijaGreen font-medium group-hover:underline">
+                                    Explore AI Data Centres
+                                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </Link>
+                    </motion.div>
+                </div>
+            </section>
+
             {/* CTA Section */}
             <section className="py-20 bg-gradient-to-br from-[#0B0F14] via-[#141B28] to-[#0B0F14] text-white">
                 <div className="max-w-7xl mx-auto px-6 text-center">
