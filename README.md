@@ -90,7 +90,7 @@ nijaworld/
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/pranavgpt/NijaWorld-Website.git
+git clone https://github.com/NIJA-WORLD/New-NijaWorld-Website.git
 cd NijaWorld-Website
 ```
 
