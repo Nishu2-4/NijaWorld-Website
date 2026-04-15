@@ -14,15 +14,9 @@ export default function LoginModal({ isOpen, onClose }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
-        setLoading(true);
-        try {
-            await login(email, password);
-            onClose();
-        } catch (err) {
-            setError(err.message);
-        } finally {
-            setLoading(false);
-        }
+        // Login now requires a 2-step OTP flow — redirect to the dedicated login page
+        onClose();
+        navigate('/admin-login');
     };
 
     return (

@@ -2,9 +2,24 @@ const { validationResult } = require("express-validator");
 const crypto = require("crypto");
 const User = require("../models/User");
 const generateToken = require("../utils/generateToken");
+const { sendOtpEmail } = require("../utils/emailService");
+
+// ─── Helpers ───────────────────────────────────────────────────────────────
+
+/** Generate a cryptographically secure 6-digit plain OTP. */
+function generateOtp() {
+    // Use random bytes to avoid modulo bias
+    const num = crypto.randomInt(100000, 999999);
+    return String(num);
+}
+
+/** Hash a plain OTP value with SHA-256 for safe DB storage. */
+function hashOtp(plain) {
+    return crypto.createHash("sha256").update(plain).digest("hex");
+}
 
 // ─────────────────────────────────────────────
-// @desc    Login user
+// @desc    Login Step 1 — verify credentials, send OTP
 // @route   POST /api/auth/login
 // @access  Public
 // ─────────────────────────────────────────────
@@ -41,6 +56,78 @@ const login = async (req, res, next) => {
                 message: "Invalid email or password.",
             });
         }
+
+        // Credentials are valid — generate a login OTP instead of issuing JWT
+        const plainOtp = generateOtp();
+        user.otp = hashOtp(plainOtp);
+        user.otpExpire = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+        user.otpPurpose = "login";
+        await user.save({ validateBeforeSave: false });
+
+        console.log("─────────────────────────────────────────────────");
+        console.log(`🔑 LOGIN OTP`);
+        console.log(`   User   : ${user.email}`);
+        console.log(`   OTP    : ${plainOtp}`);
+        console.log(`   Expires: ${user.otpExpire.toISOString()}`);
+        console.log("─────────────────────────────────────────────────");
+
+        try {
+            await sendOtpEmail({
+                name: user.name || "Admin",
+                email: user.email,
+                otp: plainOtp,
+                purpose: "login",
+            });
+            console.log(`✅ Login OTP email sent to ${user.email}`);
+        } catch (emailErr) {
+            console.error("❌ Failed to send login OTP email:", emailErr.message);
+        }
+
+        res.status(200).json({
+            success: true,
+            requiresOtp: true,
+            message: "Credentials verified. A 6-digit OTP has been sent to your email.",
+            email: user.email, // return so frontend can use it in step 2
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// ─────────────────────────────────────────────
+// @desc    Login Step 2 — verify OTP, issue JWT
+// @route   POST /api/auth/verify-login-otp
+// @access  Public
+// ─────────────────────────────────────────────
+const verifyLoginOtp = async (req, res, next) => {
+    try {
+        const { email, otp } = req.body;
+
+        if (!email || !otp) {
+            return res.status(400).json({ success: false, message: "Email and OTP are required." });
+        }
+
+        const hashedOtp = hashOtp(otp.trim());
+
+        const user = await User.findOne({
+            email: email.toLowerCase().trim(),
+            otp: hashedOtp,
+            otpPurpose: "login",
+            otpExpire: { $gt: Date.now() },
+        }).select("+otp +otpExpire +otpPurpose");
+
+        if (!user) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid or expired OTP. Please try again or go back to request a new one.",
+            });
+        }
+
+        // Clear OTP fields and issue JWT
+        user.otp = undefined;
+        user.otpExpire = undefined;
+        user.otpPurpose = undefined;
+        await user.save({ validateBeforeSave: false });
 
         const token = generateToken(user._id);
 
@@ -202,13 +289,12 @@ const toggleUserStatus = async (req, res, next) => {
     }
 };
 
-
 // ─────────────────────────────────────────────
-// @desc    Request password reset
-// @route   POST /api/auth/forgot-password
+// @desc    Send OTP to email for password reset (forgot password)
+// @route   POST /api/auth/send-otp
 // @access  Public
 // ─────────────────────────────────────────────
-const forgotPassword = async (req, res, next) => {
+const sendForgotPasswordOtp = async (req, res, next) => {
     try {
         const { email } = req.body;
 
@@ -217,37 +303,40 @@ const forgotPassword = async (req, res, next) => {
         }
 
         // Generic response to avoid user enumeration
-        const GENERIC_MSG = "If this email is registered, you will receive a password reset link shortly.";
+        const GENERIC_MSG = "If this email is registered, you will receive a 6-digit OTP shortly.";
 
         const user = await User.findOne({ email: email.toLowerCase().trim() });
 
-        // Return generic response even if user not found
         if (!user) {
             return res.status(200).json({ success: true, message: GENERIC_MSG });
         }
 
-        // Generate raw 32-byte token
-        const rawToken = crypto.randomBytes(32).toString("hex");
-
-        // Hash token for storage (never store plain token in DB)
-        const hashedToken = crypto.createHash("sha256").update(rawToken).digest("hex");
-
-        user.resetPasswordToken = hashedToken;
-        user.resetPasswordExpire = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
+        // Generate plain OTP and store its hash
+        const plainOtp = generateOtp();
+        user.otp = hashOtp(plainOtp);
+        user.otpExpire = new Date(Date.now() + 10 * 60 * 1000); // 10 minutes
+        user.otpPurpose = "reset";
 
         await user.save({ validateBeforeSave: false });
 
-        // Build reset URL (frontend handles consuming the raw token)
-        const CLIENT_URL = process.env.CLIENT_URL || "http://localhost:5173";
-        const resetUrl = `${CLIENT_URL}/reset-password/${rawToken}`;
+        console.log("─────────────────────────────────────────────────");
+        console.log(`🔑 FORGOT PASSWORD OTP`);
+        console.log(`   User   : ${user.email}`);
+        console.log(`   OTP    : ${plainOtp}`);
+        console.log(`   Expires: ${user.otpExpire.toISOString()}`);
+        console.log("─────────────────────────────────────────────────");
 
-        // In production, send via email. For now, log to console.
-        console.log("─────────────────────────────────────────────────");
-        console.log(`🔑 PASSWORD RESET LINK (log only — configure email to send)`);
-        console.log(`   User : ${user.email}`);
-        console.log(`   Link : ${resetUrl}`);
-        console.log(`   Expires : ${user.resetPasswordExpire.toISOString()}`);
-        console.log("─────────────────────────────────────────────────");
+        try {
+            await sendOtpEmail({
+                name: user.name || "Admin",
+                email: user.email,
+                otp: plainOtp,
+                purpose: "reset",
+            });
+            console.log(`✅ OTP email sent to ${user.email}`);
+        } catch (emailErr) {
+            console.error("❌ Failed to send OTP email:", emailErr.message);
+        }
 
         res.status(200).json({ success: true, message: GENERIC_MSG });
     } catch (error) {
@@ -256,16 +345,15 @@ const forgotPassword = async (req, res, next) => {
 };
 
 // ─────────────────────────────────────────────
-// @desc    Reset password using token
-// @route   PUT /api/auth/reset-password/:token
+// @desc    Verify OTP and reset password (forgot password)
+// @route   POST /api/auth/verify-otp-reset
 // @access  Public
 // ─────────────────────────────────────────────
-const resetPassword = async (req, res, next) => {
+const verifyOtpAndReset = async (req, res, next) => {
     try {
-        const { token } = req.params;
-        const { newPassword, confirmPassword } = req.body;
+        const { email, otp, newPassword, confirmPassword } = req.body;
 
-        if (!newPassword || !confirmPassword) {
+        if (!email || !otp || !newPassword || !confirmPassword) {
             return res.status(400).json({ success: false, message: "All fields are required." });
         }
 
@@ -280,26 +368,28 @@ const resetPassword = async (req, res, next) => {
             return res.status(400).json({ success: false, message: "Passwords do not match." });
         }
 
-        // Hash the incoming raw token to compare against DB
-        const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+        // Hash incoming OTP and compare against stored hash
+        const hashedOtp = hashOtp(otp.trim());
 
         const user = await User.findOne({
-            resetPasswordToken: hashedToken,
-            resetPasswordExpire: { $gt: Date.now() },
-        }).select("+resetPasswordToken +resetPasswordExpire +password");
+            email: email.toLowerCase().trim(),
+            otp: hashedOtp,
+            otpPurpose: "reset",
+            otpExpire: { $gt: Date.now() },
+        }).select("+otp +otpExpire +otpPurpose +password");
 
         if (!user) {
             return res.status(400).json({
                 success: false,
-                message: "Invalid or expired password reset token.",
+                message: "Invalid or expired OTP. Please request a new one.",
             });
         }
 
-        // Set new password (pre-save hook hashes it)
+        // Set new password — pre-save hook will hash it
         user.password = newPassword;
-        // Clear reset token fields
-        user.resetPasswordToken = undefined;
-        user.resetPasswordExpire = undefined;
+        user.otp = undefined;
+        user.otpExpire = undefined;
+        user.otpPurpose = undefined;
 
         await user.save();
 
@@ -312,5 +402,13 @@ const resetPassword = async (req, res, next) => {
     }
 };
 
-module.exports = { login, register, getMe, getAllUsers, toggleUserStatus, forgotPassword, resetPassword };
-
+module.exports = {
+    login,
+    verifyLoginOtp,
+    register,
+    getMe,
+    getAllUsers,
+    toggleUserStatus,
+    sendForgotPasswordOtp,
+    verifyOtpAndReset,
+};
