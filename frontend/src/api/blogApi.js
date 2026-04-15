@@ -109,6 +109,16 @@ export const toggleUserStatus = async (id, token) => {
     return data;
 };
 
+export const deleteUser = async (id, token) => {
+    const res = await fetch(`${API_URL}/api/auth/users/${id}`, {
+        method: 'DELETE',
+        headers: authHeaders(token),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'Failed to delete user');
+    return data;
+};
+
 // ── Settings / Password ──────────────────────────────
 
 /** Step 1 (change-password): verify current password, get OTP sent to email */

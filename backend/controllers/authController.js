@@ -290,6 +290,38 @@ const toggleUserStatus = async (req, res, next) => {
 };
 
 // ─────────────────────────────────────────────
+// @desc    Delete a user permanently (admin)
+// @route   DELETE /api/auth/users/:id
+// @access  Private (Admin only)
+// ─────────────────────────────────────────────
+const deleteUser = async (req, res, next) => {
+    try {
+        const user = await User.findById(req.params.id);
+
+        if (!user) {
+            return res.status(404).json({ success: false, message: "User not found." });
+        }
+
+        // Prevent admin from deleting themselves
+        if (user._id.toString() === req.user._id.toString()) {
+            return res.status(400).json({
+                success: false,
+                message: "You cannot delete your own account.",
+            });
+        }
+
+        await User.findByIdAndDelete(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            message: `User '${user.name}' has been permanently deleted.`,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+// ─────────────────────────────────────────────
 // @desc    Send OTP to email for password reset (forgot password)
 // @route   POST /api/auth/send-otp
 // @access  Public
@@ -409,6 +441,7 @@ module.exports = {
     getMe,
     getAllUsers,
     toggleUserStatus,
+    deleteUser,
     sendForgotPasswordOtp,
     verifyOtpAndReset,
 };

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { fetchUsers, registerUser, toggleUserStatus } from '../../api/blogApi';
+import { fetchUsers, registerUser, toggleUserStatus, deleteUser } from '../../api/blogApi';
 
 export default function UsersSection({ token, user, flash }) {
     const [users, setUsers] = useState([]);
@@ -9,7 +9,9 @@ export default function UsersSection({ token, user, flash }) {
     const [userForm, setUserForm] = useState({ name: '', email: '', password: '', role: 'editor' });
     const [userFormError, setUserFormError] = useState('');
     const [userFormLoading, setUserFormLoading] = useState(false);
-    const [deleteConfirm, setDeleteConfirm] = useState(null);
+    // confirmDelete holds the id of the user pending removal
+    const [confirmDelete, setConfirmDelete] = useState(null);
+    const [deleteLoading, setDeleteLoading] = useState(false);
 
     const load = useCallback(async () => {
         setLoading(true);
@@ -49,6 +51,21 @@ export default function UsersSection({ token, user, flash }) {
             load();
         } catch (e) {
             flash('❌ ' + e.message);
+        }
+    };
+
+    const handleDeleteConfirm = async () => {
+        if (!confirmDelete) return;
+        setDeleteLoading(true);
+        try {
+            await deleteUser(confirmDelete, token);
+            flash('✅ User removed permanently.');
+            setConfirmDelete(null);
+            load();
+        } catch (e) {
+            flash('❌ ' + e.message);
+        } finally {
+            setDeleteLoading(false);
         }
     };
 
@@ -111,6 +128,51 @@ export default function UsersSection({ token, user, flash }) {
                 )}
             </AnimatePresence>
 
+            {/* Delete confirmation modal */}
+            <AnimatePresence>
+                {confirmDelete && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="bg-[#0b1120] border border-red-500/20 rounded-2xl p-6 w-full max-w-sm mx-4 shadow-2xl"
+                        >
+                            <div className="flex items-center gap-3 mb-3">
+                                <div className="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 text-xl">
+                                    🗑️
+                                </div>
+                                <h3 className="font-bold text-white text-lg">Remove User</h3>
+                            </div>
+                            <p className="text-gray-400 text-sm mb-6">
+                                This will <span className="text-red-400 font-medium">permanently delete</span> this user account. This action cannot be undone.
+                            </p>
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={() => setConfirmDelete(null)}
+                                    disabled={deleteLoading}
+                                    className="flex-1 px-4 py-2 rounded-lg border border-white/10 text-gray-400 text-sm font-medium hover:bg-white/5 transition-all disabled:opacity-50"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleDeleteConfirm}
+                                    disabled={deleteLoading}
+                                    className="flex-1 px-4 py-2 rounded-lg bg-red-500 text-white text-sm font-semibold hover:bg-red-600 transition-all disabled:opacity-50"
+                                >
+                                    {deleteLoading ? 'Removing...' : 'Yes, Remove'}
+                                </button>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
             {loading ? (
                 <div className="flex justify-center py-24">
                     <div className="w-8 h-8 border-2 border-[#00c896]/30 border-t-[#00c896] rounded-full animate-spin" />
@@ -129,19 +191,36 @@ export default function UsersSection({ token, user, flash }) {
                                 </div>
                             </div>
                             <div className="flex items-center gap-3">
-                                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${u.role === 'admin' ? 'bg-purple-500/20 text-purple-400' : 'bg-[#00c896]/15 text-[#00c896]'}`}>
-                                    {u.role}
+                                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                                    u.role === 'superadmin'
+                                        ? 'bg-yellow-400/20 text-yellow-300 border border-yellow-400/30'
+                                        : u.role === 'admin'
+                                            ? 'bg-purple-500/20 text-purple-400'
+                                            : 'bg-[#00c896]/15 text-[#00c896]'
+                                }`}>
+                                    {u.role === 'superadmin' ? '⭐ Super Admin' : u.role}
                                 </span>
                                 <span className={`text-xs ${u.isActive ? 'text-[#00c896]' : 'text-gray-600'}`}>
                                     {u.isActive ? '● Active' : '● Inactive'}
                                 </span>
                                 {u._id !== user._id && (
-                                    <button
-                                        onClick={() => handleToggle(u._id)}
-                                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${u.isActive ? 'bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500/20' : 'bg-[#00c896]/10 text-[#00c896] border-[#00c896]/20 hover:bg-[#00c896]/20'}`}
-                                    >
-                                        {u.isActive ? 'Deactivate' : 'Activate'}
-                                    </button>
+                                    <>
+                                        <button
+                                            onClick={() => handleToggle(u._id)}
+                                            className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all ${u.isActive
+                                                ? 'bg-red-500/10 text-red-400 border-red-500/20 hover:bg-red-500/20'
+                                                : 'bg-[#00c896]/10 text-[#00c896] border-[#00c896]/20 hover:bg-[#00c896]/20'
+                                                }`}
+                                        >
+                                            {u.isActive ? 'Deactivate' : 'Activate'}
+                                        </button>
+                                        <button
+                                            onClick={() => setConfirmDelete(u._id)}
+                                            className="px-3 py-1.5 rounded-lg text-xs font-medium border bg-red-900/20 text-red-400 border-red-700/30 hover:bg-red-500/25 hover:border-red-500/40 transition-all"
+                                        >
+                                            🗑 Remove
+                                        </button>
+                                    </>
                                 )}
                             </div>
                         </div>

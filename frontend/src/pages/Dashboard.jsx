@@ -54,7 +54,8 @@ export default function Dashboard() {
     };
 
     if (!user) return null;
-    const isAdmin = user.role === 'admin';
+    const isAdmin = user.role === 'admin' || user.role === 'superadmin';
+    const isSuperAdmin = user.role === 'superadmin';
 
     const visibleNav = NAV.filter(n => !n.adminOnly || isAdmin);
 
@@ -107,8 +108,14 @@ export default function Dashboard() {
                             </div>
                             <div className="overflow-hidden">
                                 <p className="text-sm font-medium text-white truncate">{user.name}</p>
-                                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${isAdmin ? 'bg-purple-500/20 text-purple-400' : 'bg-[#00c896]/20 text-[#00c896]'}`}>
-                                    {user.role}
+                                <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${
+                                    isSuperAdmin
+                                        ? 'bg-yellow-400/20 text-yellow-300 border border-yellow-400/30'
+                                        : isAdmin
+                                            ? 'bg-purple-500/20 text-purple-400'
+                                            : 'bg-[#00c896]/20 text-[#00c896]'
+                                }`}>
+                                    {isSuperAdmin ? '⭐ Super Admin' : user.role}
                                 </span>
                             </div>
                         </div>

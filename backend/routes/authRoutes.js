@@ -8,6 +8,7 @@ const {
     getMe,
     getAllUsers,
     toggleUserStatus,
+    deleteUser,
     sendForgotPasswordOtp,
     verifyOtpAndReset,
 } = require("../controllers/authController");
@@ -50,6 +51,7 @@ router.get("/me", protect, getMe);
 // User management (admin)
 router.get("/users", protect, authorize("admin"), getAllUsers);
 router.patch("/users/:id/toggle", protect, authorize("admin"), toggleUserStatus);
+router.delete("/users/:id", protect, authorize("admin"), deleteUser);
 
 // OTP-based password reset flow (public — no auth required)
 router.post("/send-otp", sendForgotPasswordOtp);
