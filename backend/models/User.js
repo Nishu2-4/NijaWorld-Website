@@ -36,12 +36,17 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             default: true,
         },
-        resetPasswordToken: {
-            type: String,
+        otp: {
+            type: String,       // Stored as SHA-256 hash, never plain
             select: false,
         },
-        resetPasswordExpire: {
-            type: Date,
+        otpExpire: {
+            type: Date,         // 10 minutes from generation
+            select: false,
+        },
+        otpPurpose: {
+            type: String,       // "reset" | "change-password" | "login"
+            enum: ["reset", "change-password", "login"],
             select: false,
         },
     },

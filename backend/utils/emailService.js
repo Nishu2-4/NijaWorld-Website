@@ -102,4 +102,79 @@ async function sendUserConfirmation({ name, email }) {
     });
 }
 
-module.exports = { sendTeamNotification, sendUserConfirmation };
+/**
+ * Sends a 6-digit OTP email for password reset or change-password verification.
+ * @param {object} opts
+ * @param {string} opts.name         - User's display name
+ * @param {string} opts.email        - Recipient email address
+ * @param {string} opts.otp          - Plain 6-digit OTP (never stored; only used here)
+ * @param {"reset"|"change-password"} opts.purpose
+ * @param {number} [opts.expiresMinutes=10]
+ */
+async function sendOtpEmail({ name, email, otp, purpose, expiresMinutes = 10 }) {
+    const isReset = purpose === "reset";
+    const isLogin = purpose === "login";
+
+    const subject = isReset
+        ? "Your Nija World Password Reset OTP"
+        : isLogin
+        ? "Your Nija World Login Verification OTP"
+        : "Your Nija World Password Change OTP";
+
+    const heading = isReset
+        ? "🔑 Password Reset OTP"
+        : isLogin
+        ? "🔐 Login Verification OTP"
+        : "🔐 Password Change OTP";
+
+    const bodyLine = isReset
+        ? "We received a request to reset your Nija World admin password. Use the OTP below to proceed:"
+        : isLogin
+        ? "A sign-in attempt was made to your Nija World admin account. Enter the OTP below to complete login:"
+        : "A password change was initiated for your Nija World admin account. Enter the OTP below to confirm:";
+
+    // Render each digit in its own styled box
+    const digits = otp.split("");
+    const digitBoxes = digits
+        .map(
+            (d) =>
+                `<span style="display:inline-block;width:44px;height:54px;line-height:54px;text-align:center;font-size:28px;font-weight:700;background:#0e1624;border:2px solid #00c896;border-radius:10px;color:#00c896;margin:0 4px;">${d}</span>`
+        )
+        .join("");
+
+    await transporter.sendMail({
+        from: `"Nija World" <${FROM}>`,
+        to: email,
+        subject,
+        html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #0b0f14; color: #e0e6f0; border-radius: 12px; overflow: hidden;">
+            <div style="background: linear-gradient(135deg, #00c896, #0a7c5c); padding: 28px 32px;">
+                <h1 style="margin: 0; font-size: 22px; color: #fff;">${heading}</h1>
+                <p style="margin: 6px 0 0; color: rgba(255,255,255,0.85); font-size: 14px;">Nija World Admin Portal</p>
+            </div>
+            <div style="padding: 28px 32px; line-height: 1.75;">
+                <p style="margin: 0 0 8px; color: #c8d0de;">Hi <strong style="color:#fff">${name}</strong>,</p>
+                <p style="margin: 0 0 24px; color: #c8d0de;">${bodyLine}</p>
+
+                <div style="text-align: center; margin: 28px 0;">
+                    ${digitBoxes}
+                </div>
+
+                <div style="background: rgba(255,200,0,0.05); border: 1px solid rgba(255,200,0,0.15); border-radius: 10px; padding: 14px 18px; margin: 24px 0;">
+                    <p style="margin: 0; color: #c8a800; font-size: 13px;">⏰ This OTP expires in <strong>${expiresMinutes} minutes</strong>. Do not share it with anyone.</p>
+                </div>
+
+                <p style="margin: 0; color: #6b7a93; font-size: 13px;">
+                    If you did not request this, you can safely ignore this email — your password will not change.
+                </p>
+            </div>
+            <div style="padding: 16px 32px; background: rgba(255,255,255,0.03); border-top: 1px solid rgba(255,255,255,0.07); font-size: 12px; color: #4a5568;">
+                © ${new Date().getFullYear()} Nija World · <a href="https://nija.world" style="color:#00c896;">nija.world</a>
+            </div>
+        </div>
+        `,
+    });
+}
+
+module.exports = { sendTeamNotification, sendUserConfirmation, sendOtpEmail };
+
