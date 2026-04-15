@@ -144,7 +144,7 @@ export function Footer() {
                         <h4 className="text-white font-semibold text-lg mb-6">Contact</h4>
                         <div className="space-y-4">
                             <p className="text-sm leading-relaxed">
-                                #B/37, "Pernakuti", 1st Cross, Siddhivinayaka Layout, BSK 3rd Stage, 3rd Phase Bangalore - 560 085
+                                #B/37, "Parnakuti", 1st Cross, Siddhivinayaka Layout, BSK 3rd Stage, 3rd Phase Bangalore - 560 085
                             </p>
                             <div className="flex items-center gap-2">
                                 <svg className="w-4 h-4 text-nijaGreen" fill="currentColor" viewBox="0 0 20 20">
