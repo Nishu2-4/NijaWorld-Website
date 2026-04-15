@@ -29,8 +29,8 @@ export default function ResetPassword() {
         try {
             await apiResetPassword(token, form.newPassword, form.confirmPassword);
             setSuccess(true);
-            // Redirect to blog login after 3 seconds
-            setTimeout(() => navigate('/blogs'), 3000);
+            // Redirect to admin login after 3 seconds
+            setTimeout(() => navigate('/admin-login'), 3000);
         } catch (err) {
             setError(err.message);
         } finally {
@@ -87,7 +87,7 @@ export default function ResetPassword() {
                                     Redirecting you to login…
                                 </p>
                                 <Link
-                                    to="/blogs"
+                                    to="/admin-login"
                                     className="inline-block px-6 py-2.5 rounded-lg bg-nijaGreen text-black font-semibold text-sm hover:bg-nijaGreen/90 transition-all mt-2"
                                 >
                                     Go to Login

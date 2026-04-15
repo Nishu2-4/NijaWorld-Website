@@ -36,6 +36,7 @@ export function AuthProvider({ children }) {
         restore();
     }, []);
 
+    // Step 1: Validate credentials, trigger OTP email
     const login = async (email, password) => {
         const res = await fetch(`${API_URL}/api/auth/login`, {
             method: 'POST',
@@ -44,6 +45,19 @@ export function AuthProvider({ children }) {
         });
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || 'Login failed');
+        // Returns { requiresOtp: true, email } — no token yet
+        return data;
+    };
+
+    // Step 2: Verify OTP, receive JWT and complete authentication
+    const verifyLoginOtp = async (email, otp) => {
+        const res = await fetch(`${API_URL}/api/auth/verify-login-otp`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, otp }),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || 'OTP verification failed');
         localStorage.setItem('nija_token', data.token);
         setToken(data.token);
         setUser(data.user);
@@ -57,7 +71,7 @@ export function AuthProvider({ children }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, token, loading, login, logout, isAuthenticated: !!user }}>
+        <AuthContext.Provider value={{ user, token, loading, login, verifyLoginOtp, logout, isAuthenticated: !!user }}>
             {children}
         </AuthContext.Provider>
     );

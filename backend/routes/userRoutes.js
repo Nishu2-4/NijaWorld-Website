@@ -1,19 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const { body } = require("express-validator");
-const { changePassword } = require("../controllers/userController");
+const { requestChangeOtp, verifyChangeOtp } = require("../controllers/userController");
 const { protect } = require("../middleware/authMiddleware");
 
-// Validation rules
-const changePasswordValidation = [
-    body("currentPassword").notEmpty().withMessage("Current password is required."),
-    body("newPassword")
-        .isLength({ min: 8 })
-        .withMessage("New password must be at least 8 characters."),
-    body("confirmPassword").notEmpty().withMessage("Confirm password is required."),
-];
+// Step 1: Verify current password + send OTP
+router.post("/request-change-otp", protect, requestChangeOtp);
 
-// Routes
-router.put("/change-password", protect, changePasswordValidation, changePassword);
+// Step 2: Verify OTP + save new password
+router.post("/verify-change-otp", protect, verifyChangeOtp);
 
 module.exports = router;

@@ -110,19 +110,34 @@ export const toggleUserStatus = async (id, token) => {
 };
 
 // ── Settings / Password ──────────────────────────────
-export const changePassword = async ({ currentPassword, newPassword, confirmPassword }, token) => {
-    const res = await fetch(`${API_URL}/api/users/change-password`, {
-        method: 'PUT',
+
+/** Step 1 (change-password): verify current password, get OTP sent to email */
+export const requestChangeOtp = async ({ currentPassword, newPassword, confirmPassword }, token) => {
+    const res = await fetch(`${API_URL}/api/users/request-change-otp`, {
+        method: 'POST',
         headers: authHeaders(token),
         body: JSON.stringify({ currentPassword, newPassword, confirmPassword }),
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.message || 'Failed to change password');
+    if (!res.ok) throw new Error(data.message || 'Failed to send OTP');
     return data;
 };
 
-export const forgotPassword = async (email) => {
-    const res = await fetch(`${API_URL}/api/auth/forgot-password`, {
+/** Step 2 (change-password): submit OTP to confirm and save new password */
+export const verifyChangeOtp = async ({ otp, newPassword, confirmPassword }, token) => {
+    const res = await fetch(`${API_URL}/api/users/verify-change-otp`, {
+        method: 'POST',
+        headers: authHeaders(token),
+        body: JSON.stringify({ otp, newPassword, confirmPassword }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.message || 'OTP verification failed');
+    return data;
+};
+
+/** Step 1 (forgot password): send OTP to the given email */
+export const sendForgotOtp = async (email) => {
+    const res = await fetch(`${API_URL}/api/auth/send-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -132,14 +147,14 @@ export const forgotPassword = async (email) => {
     return data;
 };
 
-export const resetPassword = async (token, newPassword, confirmPassword) => {
-    const res = await fetch(`${API_URL}/api/auth/reset-password/${token}`, {
-        method: 'PUT',
+/** Step 2 (forgot password): verify OTP and set new password */
+export const verifyOtpAndReset = async ({ email, otp, newPassword, confirmPassword }) => {
+    const res = await fetch(`${API_URL}/api/auth/verify-otp-reset`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ newPassword, confirmPassword }),
+        body: JSON.stringify({ email, otp, newPassword, confirmPassword }),
     });
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || 'Reset failed');
     return data;
 };
-

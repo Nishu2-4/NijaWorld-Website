@@ -50,7 +50,6 @@ import BlogPost from './pages/BlogPost';
 import Dashboard from './pages/Dashboard';
 import AdminLogin from './pages/AdminLogin';
 import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
 import { AuthProvider } from './context/AuthContext';
 import InsightArticle from './pages/InsightArticle';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -118,7 +117,6 @@ function App() {
             }
           />
           <Route path='/forgot-password' element={<ForgotPassword />} />
-          <Route path='/reset-password/:token' element={<ResetPassword />} />
           <Route path='/media' element={<Media />} />
           <Route path='/partners' element={<Partners />} />
           <Route path='/contact' element={<Contact />} />
