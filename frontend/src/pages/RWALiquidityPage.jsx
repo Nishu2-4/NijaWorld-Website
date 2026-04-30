@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { AnimatedPageBackground } from '../components/AnimatedPageBackground';
 import { Footer } from '../components/Footer';
 import { Navbar } from '../components/Navbar';
+import { Link } from 'react-router-dom';
 
 export default function RWALiquidityPage() {
     const [openApproach, setOpenApproach] = useState(0);
@@ -50,13 +51,13 @@ export default function RWALiquidityPage() {
                                     initial={{ scale: 0.8 }}
                                     whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
                                 />
-                                <button className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
+                                <Link to="/contact" className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
                                     Schedule a Consultation
-                                </button>
+                                </Link>
                             </div>
-                            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Download Overview
-                            </button>
+                            </Link>
                         </motion.div>
                     </div>
                 </div>
@@ -572,16 +573,16 @@ export default function RWALiquidityPage() {
                                     initial={{ scale: 0.8 }}
                                     whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
                                 />
-                                <button className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
+                                <Link to="/contact" className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
                                     Schedule a Consultation
-                                </button>
+                                </Link>
                             </div>
-                            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Request a Demo
-                            </button>
-                            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            </Link>
+                            <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Download Overview
-                            </button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

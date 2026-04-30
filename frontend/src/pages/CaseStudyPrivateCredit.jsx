@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 export default function CaseStudyPrivateCredit() {
     const [activeStep, setActiveStep] = useState(null);
@@ -49,12 +50,12 @@ export default function CaseStudyPrivateCredit() {
 
                         {/* CTAs */}
                         <div className="flex flex-wrap gap-4">
-                            <button className="bg-nijaGreen hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 transform hover:scale-105">
+                            <Link to="/contact" className="bg-nijaGreen hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 transform hover:scale-105">
                                 Schedule a Consultation
-                            </button>
-                            <button className="bg-nijaPurple hover:bg-purple-600 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaPurple/30 hover:shadow-nijaPurple/50 transform hover:scale-105">
+                            </Link>
+                            <Link to="/contact" className="bg-nijaPurple hover:bg-purple-600 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaPurple/30 hover:shadow-nijaPurple/50 transform hover:scale-105">
                                 Talk to a Solutions Architect
-                            </button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
@@ -446,12 +447,12 @@ export default function CaseStudyPrivateCredit() {
                             Exploring liquidity for tokenised credit exposure?
                         </h2>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <button className="bg-nijaGreen hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 transform hover:scale-105">
+                            <Link to="/contact" className="bg-nijaGreen hover:bg-green-500 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 transform hover:scale-105">
                                 Schedule a Consultation
-                            </button>
-                            <button className="bg-nijaPurple hover:bg-purple-600 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaPurple/30 hover:shadow-nijaPurple/50 transform hover:scale-105">
+                            </Link>
+                            <Link to="/contact" className="bg-nijaPurple hover:bg-purple-600 text-white px-8 py-3.5 rounded-full font-medium transition shadow-lg shadow-nijaPurple/30 hover:shadow-nijaPurple/50 transform hover:scale-105">
                                 Talk to a Solutions Architect
-                            </button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

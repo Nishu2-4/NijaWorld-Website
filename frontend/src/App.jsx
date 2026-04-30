@@ -30,7 +30,6 @@ import DAVProPage from './pages/DAVProPage';
 import Home from './pages/Home';
 import IdentityPage from './pages/IdentityPage';
 import Insights from './pages/Insights';
-import Join from './pages/Join';
 import LoyaltyPage from './pages/LoyaltyPage';
 import Media from './pages/Media';
 import Partners from './pages/Partners';
@@ -103,7 +102,6 @@ function App() {
           <Route path='/insights' element={<Insights />} />
           <Route path='/insights/:slug' element={<InsightArticle />} />
           <Route path='/contact' element={<Contact />} />
-          <Route path='/join' element={<Join />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/blogs' element={<Blogs />} />
           <Route path='/blogs/:slug' element={<BlogPost />} />

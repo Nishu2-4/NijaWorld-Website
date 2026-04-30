@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { AnimatedPageBackground } from '../components/AnimatedPageBackground';
@@ -6,8 +7,6 @@ import digitisationImg from '../assets/images/ai/digitisation.png';
 import automationImg from '../assets/images/ai/automation.png';
 import infrastructureImg from '../assets/images/ai/infrastructure.png';
 import aiWorkflowImg from '../assets/images/ai_workflow_vibrant.png';
-
-import { Link } from 'react-router-dom';
 
 export default function AIPage() {
     const aiCapabilities = [
@@ -171,13 +170,13 @@ export default function AIPage() {
                                     whileHover={{ scale: 1.1 }}
                                     transition={{ duration: 0.3 }}
                                 />
-                                <button className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
+                                <Link to="/contact" className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
                                     Request a Demo
-                                </button>
+                                </Link>
                             </div>
-                            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Talk to a Solutions Architect
-                            </button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

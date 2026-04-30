@@ -254,7 +254,7 @@ export default function Technologies() {
                         <h2 className="text-3xl font-bold mb-8">
                             Explore how Nija’s technology fits your enterprise
                         </h2>
-                        <div className="flex flex-wrap gap-4 justify-center">
+                        <div className="flex flex-wrap gap-4 justify-center items-center">
                             <div className="relative group">
                                 <motion.div
                                     className="absolute inset-0 bg-nijaGreen rounded-lg blur-xl opacity-10 group-hover:opacity-20 transition-opacity duration-300"
@@ -262,13 +262,13 @@ export default function Technologies() {
                                     whileHover={{ scale: 1.1 }}
                                     transition={{ duration: 0.3 }}
                                 />
-                                <button className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
+                                <Link to="/contact" className="relative z-10 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50">
                                     Request a Demo
-                                </button>
+                                </Link>
                             </div>
-                            <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            <Link to="/contact" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Talk to a Solutions Architect
-                            </button>
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export function Delivery() {
     const phases = [
@@ -140,9 +141,9 @@ export function Delivery() {
                     transition={{ delay: 0.3 }}
                     className="text-center"
                 >
-                    <button className="px-8 py-3 rounded-full border border-nijaPurple text-nijaPurple font-medium hover:bg-nijaPurple hover:text-white transition-all shadow-lg shadow-nijaPurple/10 hover:shadow-nijaPurple/30">
+                    <Link to="/contact" className="px-8 py-3 rounded-full border border-nijaPurple text-nijaPurple font-medium hover:bg-nijaPurple hover:text-white transition-all shadow-lg shadow-nijaPurple/10 hover:shadow-nijaPurple/30">
                         Talk to a Solutions Architect →
-                    </button>
+                    </Link>
                 </motion.div>
             </div>
         </section>

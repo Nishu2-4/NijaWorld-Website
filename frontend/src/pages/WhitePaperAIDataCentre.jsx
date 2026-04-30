@@ -110,7 +110,8 @@ export default function WhitePaperAIDataCentre() {
                                     whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
                                 />
                                 <a
-                                    href="/white-papers/ai-data-centres-whitepaper.pdf"
+                                    href="/White_Paper_AI_Mini_Data_Centre.pdf"
+                                    download
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="relative z-10 inline-flex items-center gap-2 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50"
@@ -273,7 +274,8 @@ export default function WhitePaperAIDataCentre() {
                                     whileHover={{ scale: 1.1, transition: { duration: 0.15 } }}
                                 />
                                 <a
-                                    href="/white-papers/ai-data-centres-whitepaper.pdf"
+                                    href="/White_Paper_AI_Mini_Data_Centre.pdf"
+                                    download
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="relative z-10 inline-flex items-center gap-2 bg-nijaGreen hover:bg-green-500 text-white px-8 py-4 rounded-lg font-medium transition shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50"

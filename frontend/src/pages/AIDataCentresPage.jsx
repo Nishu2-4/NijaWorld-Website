@@ -178,9 +178,9 @@ export default function AIDataCentresPage() {
                                     Schedule a Consultation
                                 </Link>
                             </div>
-                            <Link to="/white-papers/ai-data-centres" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            <a href="/White_Paper_AI_Mini_Data_Centre.pdf" download className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Download White Paper
-                            </Link>
+                            </a>
                         </motion.div>
 
                         {/* Highlight Bullets */}
@@ -622,9 +622,9 @@ export default function AIDataCentresPage() {
                                     Schedule a Consultation
                                 </Link>
                             </div>
-                            <Link to="/white-papers/ai-data-centres" className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
+                            <a href="/White_Paper_AI_Mini_Data_Centre.pdf" download className="border-2 border-white text-white px-8 py-4 rounded-lg font-medium transition hover:bg-white/10">
                                 Download White Paper
-                            </Link>
+                            </a>
                         </div>
                     </motion.div>
                 </div>

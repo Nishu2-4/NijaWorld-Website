@@ -40,9 +40,9 @@ export function Hero() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="mt-8 flex gap-4 flex-wrap pointer-events-auto"
                     >
-                        <Link to="/join">
+                        <Link to="/contact">
                             <button className="bg-nijaGreen hover:bg-green-500 transition text-white px-6 py-3 rounded-lg font-medium shadow-lg shadow-nijaGreen/30 hover:shadow-nijaGreen/50 hover:scale-105 transform">
-                                Join →
+                                Contact Us
                             </button>
                         </Link>
                         <Link to="/case-studies">
